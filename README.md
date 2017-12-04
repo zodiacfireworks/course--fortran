@@ -5,9 +5,9 @@
 
 Materiales de clases para la enseñanza del lenguaje de programación Fortran que empleo en mis cursos de capacitación.
 
-Los cursos generalmente de dividen en sesiones de nivel básico, intermedio y avanado dependiendo de la profundidad con la que cada tópico sea tratado y la complejidad del mismo.
+Los cursos generalmente de dividen en sesiones de nivel básico, intermedio y avanzado dependiendo de la profundidad con la que los tópico son tratado y la complejidad de los mismos.
 
-El material y los ejemplos desarrollados estan orientados a aplicaciones físicas ya sea instrumentación, procesamiento de datos o modelamiento y simulaciones.
+El material y los ejemplos desarrollados están orientados a aplicaciones físicas ya sea instrumentación, procesamiento de datos o simulaciones.
 
 ## Autor
 
@@ -15,11 +15,11 @@ El material y los ejemplos desarrollados estan orientados a aplicaciones física
 
 ## Licencia
 
-Todos los recursos desarrollados por mí en este repositorio son puestos a disposición del publico bajo la linencia GNU GLPv3.0 (Véase el archivo LICENSE)
+Todos los recursos desarrollados por mí en este repositorio son puestos a disposición del publico bajo la licencia GNU GLPv3.0 (Véase el archivo LICENSE)
 
 Los recursos con sus respectivas licencias son protegidos por las mismas.
 
-Si usted encuentra contenido protegido por derechos de autor o sin sus respectivos cŕeditos, por favor, hágamelo saber para pnerl el orden de acuerdo a ley.
+Si usted encuentra contenido protegido por derechos de autor o sin sus respectivos créditos, por favor, no dude en contactarme.
 
 
 [1]: https://github.com/zodiacfireworks/course--fortran
