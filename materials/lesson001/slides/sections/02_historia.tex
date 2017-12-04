@@ -1,0 +1,265 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE
+%-----------------------------------------------------------------------------80
+\section{Introducción histórica}
+
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+% En el origen ---------------------------------------------------------------80
+\subsection{En el origen}
+\begin{frame}[fragile]{Orígenes}
+  \textbf{En el origen ...}
+  \begin{itemize}[<+(1)->]
+      \item Código máquina en notación octal
+      \item Conocimiento muy detallado del hardware
+  \end{itemize}
+
+  \onslide<4->\textbf{A inicios de los 50s}
+  \begin{itemize}[<+(2)->]
+    \item Assembler
+    \item Menos laborioso que el código máquina
+    \item Conocimiento detallado del hardware
+  \end{itemize}
+
+  \onslide<8->\textbf{El panorama general ...}
+  \begin{itemize}[<+(3)->]
+    \item Conocimiento del harware
+    \item Facilidad de cometer errores
+    \item Encontrar los errores en los programas era bastante difícil
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Orígenes}
+  \textbf{Génesis 1953 ...}
+  \begin{itemize}[<+(1)->]
+    \item[] John  Backus envía una carta a su jefe en IBM pidiendo permiso para
+      investigar una \textit{mejor forma} de programar las computadoras. La
+      carta contenia un esboo de projecto con un tiempo de desarrollo de 6
+      meses.
+    \item[] Así emepzo el proyecto que daría origen a Fortran
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Orígenes}
+  \begin{quote}
+    ``The project completion was always six months away!''\\
+     John Backus
+  \end{quote}
+\end{frame}
+
+
+\begin{frame}[fragile]{Orígenes}
+  \textbf{1957}
+  \begin{itemize}[<+(1)->]
+    \item[] En febrero FORTRAN, el primer lenguaje de programación de alto nivel, fue anunciado al mundo por John Backus y su equipo de IBM en la Western Joint Computer Conference celebrada en Los Ángeles.
+    \item[] A mediados de abril de 1957 tuvo lugar la primera entrega del compilador de FORTRAN para IBM 704 a Westinghouse Bettis para su uso en el diseño de reactores nucleares.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Orígenes}
+  \textbf{Las versiones de FORTRAN}
+  \begin{description}[<+(1)->]
+    \item[1957] FORTRAN I
+    \item[1958] FORTRAN II
+    \item[1958] FORTRAN III (No disponible al público)
+    \item[1961] FORTRAN IV (Una versión mejorada de FORTRAN II)
+      \end{description}
+\end{frame}
+
+
+\begin{frame}[fragile]{Orígenes}
+    \textbf{Algoritmo TPK en FORTRAN 0}
+    \begin{minted}[linenos,autogobble]{fortran}
+             DIMENSION A(11)
+             READ A
+      2      DO 3,8,11 J=1,11
+      3      I=11-J
+             Y=SQRT(ABS(A(I+1)))+5*A(I+1)**3
+             IF (400>=Y) 8,4
+      4      PRINT I,999.
+             GOTO 2
+      8      PRINT I,Y
+      11     STOP
+    \end{minted}
+\end{frame}
+
+
+\begin{frame}[fragile]{Orígenes}
+    \textbf{Algoritmo TPK en FORTRAN I}
+    \begin{minted}[linenos,autogobble]{fortran}
+      C      THE TPK ALGORITHM
+      C      FORTRAN I STYLE
+             FUNF(T)=SQRTF(ABSF(T))+5.0*T**3
+             DIMENSION A(11)
+        1    FORMAT(6F12.4)
+             READ 1,A
+             DO 10 J=1,11
+             I=11-J
+             Y=FUNF(A(I+1))
+             IF(400.0-Y)4,8,8
+        4    PRINT 5,I
+        5    FORMAT(I10,10H TOO LARGE)
+             GOTO 10
+        8    PRINT 9,I,Y
+        9    FORMAT(I10,F12.7)
+       10    CONTINUE
+             STOP 52525
+    \end{minted}
+\end{frame}
+
+
+% La estandarización ---------------------------------------------------------80
+\subsection{La estandarización}
+\begin{frame}[fragile]{La estándarización}
+  \begin{itemize}[<+(1)->]
+    \item[1962] El primer comité de estandarización de la ASA (Ahora ANSI) se re reune.
+    \item[1966] Publicación del ANSI X3.91966 (FORTRAN 66), el primer estándar.
+    \item[1978] Publicación del ANSI X3.91978 (FORTRAN 77), tambien publicado como ISO 1539:1980.
+    \item[1991] ISO/IEC 1539:1991 (Fortran 90)
+    \item[1997] ISO/IEC 1539­1:1997 (Fortran 95)
+    \item[2004] ISO/IEC 1539­1:2004 (Fortran 2003)
+    \item[2010] ISO/IEC 1539­1:2010 (Fortran 2008)
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{La estándarización}
+    \textbf{Algoritmo TPK en FORTRAN 77}
+    \begin{minted}[linenos,autogobble]{fortran}
+             PROGRAM TPK
+     C       THE TPK ALGORITHM
+     C       FORTRAN 77 STYLE
+             REAL A(0:10)
+             READ (5,*) A
+             DO 10 I = 10, 0, -1
+                     Y = FUN(A(I))
+                     IF ( Y . LT. 400) THEN
+                              WRITE(6,9) I,Y
+       9                      FORMAT(I10. F12.6)
+                     ELSE
+                              WRITE (6,5) I
+       5                      FORMAT(I10,' TOO LARGE')
+                     ENDIF
+      10    CONTINUE
+            END
+
+            REAL FUNCTION FUN(T)
+            REAL T
+            FUN = SQRT(ABS(T)) + 5.0*T**3
+            END
+    \end{minted}
+\end{frame}
+
+
+\begin{frame}[fragile]{La estándarización}
+    \textbf{Algoritmo TPK en FORTRAN 90}
+    \begin{minted}[linenos,autogobble]{fortran}
+            PROGRAM TPK
+     !      The TPK Algorithm
+     !      Fortran 90 style
+            IMPLICIT NONE
+            INTEGER          :: I
+            REAL                       :: Y
+            REAL, DIMENSION(0:10)      :: A
+            READ (*,*) A
+            DO I = 10, 0, -1           ! Backwards
+                    Y = FUN(A(I))
+                    IF ( Y < 400.0 ) THEN
+                           WRITE(*,*) I, Y
+                    ELSE
+                           WRITE(*,*) I, ' Too large'
+                    END IF
+            END DO
+            CONTAINS                   ! Local function
+                    FUNCTION FUN(T)
+                    REAL  :: FUN
+                    REAL, INTENT(IN) :: T
+                    FUN = SQRT(ABS(T)) + 5.0*T**3
+                    END FUNCTION FUN
+            END PROGRAM TPK
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{La estándarización}
+    \textbf{Algoritmo TPK en FORTRAN 90}
+    \begin{minted}[linenos,autogobble]{fortran}
+            module Functions
+            public :: fun
+            contains
+               function fun(t) result (r)
+                  real, intent(in) :: t
+                  real  :: r
+                  r = sqrt(abs(t)) + 5.0*t**3
+               end function fun
+            end module Functions
+
+            program TPK
+      !     The TPK Algorithm
+      !     F95 style
+            use Functions
+            integer       :: i
+            real                  :: y
+            real, dimension(0:10) :: a
+            read *, a
+            do i = 10, 0, -1      ! Backwards
+               y = fun(a(i))
+               if ( y < 400.0 ) then
+                  print *, i, y
+               else
+                  print *, i, " Too large"
+               end if
+            end do
+            end program TPKTPK
+    \end{minted}
+\end{frame}
+
+
+% Actualidad -----------------------------------------------------------------80
+\subsection{En la actualidad}
+\begin{frame}[fragile]{En la actualidad ...}
+  \begin{quote}
+    ``I don’t know what the programming language of the year 2000 will look like, but I know it will be called FORTRAN.''\\
+    Charles Anthony Richard Hoare\\
+    Circa 1982
+  \end{quote}
+\end{frame}
+
+
+\begin{frame}[fragile]{En la actualidad ...}
+  \textbf{Aplicaciones}
+  \begin{itemize}[<+(1)->]
+    \item Predicción del clima
+    \item Análisis de datos de simicos para la exploracion de depositos de gas y petroleo
+    \item Análisis fianciero
+    \item Simulacion de choques vehiculares
+    \item Análisis de datos de sondas espaciales
+    \item Modelación de armas nucleares
+    \item Dinámica de fluidos computacionales
+    \item ``Numerical Wind Tunnel''
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{En la actualidad ...}
+  \begin{itemize}[<+(1)->]
+    \item Intel
+    \item IBM
+    \item NVIDIA
+  \end{itemize}
+\end{frame}
+
+
+% Futuro ---------------------------------------------------------------------80
+\subsection{El futuro}
+\begin{frame}[fragile]{El futuro}
+  \begin{itemize}[<+(1)->]
+    \item \textbf{WG5: }\url{https://wg5-fortran.org/}
+    \item \textbf{Fortran Wiki: }\url{http://fortranwiki.org/}
+    \item \textbf{WG5: }\url{https://wg5-fortran.org/}
+  \end{itemize}
+\end{frame}
