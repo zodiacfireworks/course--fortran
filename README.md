@@ -3,11 +3,11 @@
 [![Quote](./banner.png)][1]
 [![GNU General Public License][2]][1] [![Fortran][3]][1] [![Python][4]][1] [![C++][5]][1] [![LaTeX][6]][1] [![Jupyter Notebook][7]][1] [![Programming][8]][1] [![Teaching][9]][1] [![Physics][10]][1]
 
-Materiales de clases para la enseñanza del lenguaje de programación Fortran que empleo en mis cursos de capacitación.
+Materiales de clases para la enseñanza del lenguaje de programación Fortran que empleo en los cursos de capacitación que dicto.
 
 Los cursos generalmente de dividen en sesiones de nivel básico, intermedio y avanzado dependiendo de la profundidad con la que los tópico son tratado y la complejidad de los mismos.
 
-El material y los ejemplos desarrollados están orientados a aplicaciones físicas ya sea instrumentación, procesamiento de datos o simulaciones.
+El material y los ejemplos desarrollados están orientados pricipalmente a aplicaciones físicas ya sea instrumentación, procesamiento de datos o simulaciones.
 
 ## Autor
 
