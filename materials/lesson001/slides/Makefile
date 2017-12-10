@@ -20,7 +20,7 @@ endif
 
 .PHONY: all all-before all-after clean
 
-all: clean all-before $(OUTTEX) $(OUTTEX) $(OUTTEX) all-after clean-custom
+all: clean all-before $(OUTTEX) all-after clean-custom
 
 all-before:
 ifeq ($(OS),Windows_NT)
@@ -39,4 +39,7 @@ clean-custom:
 	$(RM) $(OUTDIR)
 
 $(OUTTEX): $(GLOBALDEPS)
-	$(TEX) $(FALGSTEX) --output-directory=$(OUTDIR) $(SRCTEX)
+	for number in 1 2 3 ; do \
+	$(TEX) $(FALGSTEX) --output-directory=$(OUTDIR) $(SRCTEX); \
+	done
+	
