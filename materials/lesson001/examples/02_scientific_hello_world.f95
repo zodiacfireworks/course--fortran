@@ -14,10 +14,13 @@
 ! ------------------------------------------------------------------------------
 PROGRAM hello_world
     IMPLICIT NONE
+
     ! Angulo de entrada
     REAL(KIND=4) :: theta
+    
     ! Resultado de aplicar la función seno 
     REAL(KIND=4) :: sin_of_theta
+    
     ! Mensaje
     CHARACTER(len=*), PARAMETER :: Message = 'Hello World'
 

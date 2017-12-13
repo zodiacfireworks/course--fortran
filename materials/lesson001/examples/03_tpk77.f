@@ -60,13 +60,14 @@ C     ------------------------------------------------------------------
       PROGRAM TPK
       REAL A(0:10)
       READ (5,*) A
-      DO 10 I=10,0,-1
-      Y=FUN(A(I))
+      DO 10 I=0,10,1
+      J=10-I
+      Y=FUN(A(J))
       IF(Y .LT. 400) THEN
-      WRITE (6, *) I, Y
+      WRITE (6, *) J, Y
       ELSE
- 5    FORMAT(I10, ' TOO LARGE')
-      WRITE (6,5)
+ 5    FORMAT(A10, ' TOO LARGE')
+      WRITE (6, 5)
       ENDIF
  10   CONTINUE
       END
