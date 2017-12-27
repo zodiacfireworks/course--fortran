@@ -1,0 +1,45 @@
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+
+\subsection{Formatos de escritura de un programa de Fortran}
+
+\begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
+  \begin{itemize}[<+(1)->]
+  \item Se crea el código fuente en un editor de textos y se guarda con su respectiva extensión (.f, .f90, .f95)
+  \item [] \begin{mintedbash} 
+            editor nombre.extensión
+           \end{mintedbash}
+  \item Se emplean caracteres ASCI en el código fuente (alfanuméricos, símbolos y espacio)
+  \item No hay distinción entre mayúsculas y minúsculas.
+  \item Los caracteres propios del español no pueden ser utilizadas en las instrucciones (á, é, ñ)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
+ \textbf{Formato libre}
+  \begin{itemize}[<+(1)->]
+   \item Aplicable a versiones de Fortran 90 en adelante, de extensión f.90, f.95, ...
+   \item Permite un máximo de 132 caracteres.
+   \item Se emplea el caracter (!) para empezar un comentario, sin que este se tome en cuentra durante la compilación.
+   \item Se emplea el caracter (;) para separar dos instrucciones.
+   \item En caso falte espacio en una línea, el caracter (\&) permite continuar las instrucciones en la siguiente línea, colocándolo al final de la línea anterior y al inicio de la línea por comenzar.
+   \item Aquí falta el apartado 5 !!!!!!!!!
+   \item 
+   \item 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
+ \textbf{Formato fijo}
+  \begin{itemize}[<+(1)->]
+   \item Aplicable a versiones anteriores a Fortran 90, de extensión .f, .for, ...
+   \item Permite un máximo de 72 caracteres.
+   \item Se emplea el caracter (C) para comenzar un comentario. 
+   \item Se permite una sola instrucción por línea, comenzando a partir del séptimo caracter.
+   \item La continuación de una instrucción en una siguiente línea está dada por algún caracter no alfanumérico en el sexto caracter. 
+   \item Los primeros cinco caracteres en una línea de instrucción se pueden emplear en caso se requiera una etiqueta (número positivo diferente de cero con un máximo de cinco dígitos).
+   \item Apartado 6!!!
+  \end{itemize}
+\end{frame}
+

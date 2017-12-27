@@ -2,7 +2,25 @@
 % CONTENT
 %-----------------------------------------------------------------------------80
 
-\subsection{Compilación}
+\subsection{Proceso de compilación}
+
+\begin{frame}[fragile]{Proceso de compilación}
+  \begin{itemize}[<+(1)->]
+  \item  El proceso de compilación se puede resumir en dos pasos
+  \hspace{1cm} \item [-] Compilación
+  \hspace{1cm} \item [-] Enlazado
+
+  \item El proceso de compilación en fortran posee la siguiente sintaxis:
+  \item [] \begin{mintedbash} 
+            fcomp [options] file1 [file2] [...] [fileN]
+           \end{mintedbash}
+  \item [-] fcomp $\Rightarrow$ denota el comando para llamar al compilador. (gfortran, ifort, ...)
+  \item [-] options $\Rightarrow$ opciones que permite el compilador. (-o, -f, -c, ...)
+  \item [-] file $\Rightarrow$ denota el archivo con su respectiva extensión (.f90, .f95, .o, ...)    
+  \item Finalmente se obtiene un producto final.
+\end{itemize}
+\end{frame}
+  
 
 \begin{frame}[fragile]{Compilación}
 \textbf{Compilador}
@@ -19,22 +37,4 @@ en otro lenguaje de programación (código máquina), ambos equivalentes.
     \includegraphics[width=1\textwidth]{./resources/compilation_op.png}
     \caption{Diagrama de bloques del proceso de compilación}
    \end{figure}
-\end{frame}
-
-
-\begin{frame}[fragile]{Compilación}
-\textbf{Proceso de compilación}
-  \begin{itemize}[<+(1)->]
-  \item  
-     
-  \item []El compilador de fortran posee la siguiente sintaxis:
-  \item [] 
-     \begin{mintedbash} 
-      fcomp [opciones] file1 [file2] [...] [fileN]
-     \end{mintedbash}
-  \item [-] fcomp $~$ denota el comando para llamar al compilador. (gfortran, ifort, ...)
-  \item [-] opciones $~$ opciones que permite el compilador. (-o, -f, -c, ...)
-  \item [-] file $~$ denota el archivo con su respectiva extensión (.f90, .f95, .o, ...)    
-  \end{itemize}
-
 \end{frame}
