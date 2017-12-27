@@ -81,14 +81,36 @@
 %% Customizations
 %%----------------------------------------------------------------------------80
 
+%----------FONDO DE CÓDIGO MINTED----------------%
+\newminted[mintedbash]{bash}{linenos=true, autogobble=true, texcl=true, bgcolor=grey-300, fontsize=auto }
+
+%---------------------------------------------%
+
 
 %%----------------------------------------------------------------------------80
 %% Custom commands definitions
 %%----------------------------------------------------------------------------80
+
 \makeatletter
 \definecolor{green-600}{HTML}{43A047}
+\definecolor{grey-300}{HTML}{E0E0E0}
 
-\makeatother
+%----------FONDO DE CÓDIGO MINTED----------------%
+\renewenvironment{minted@colorbg}[1]
+ {\def\minted@bgcol{#1}%
+  \noindent
+  \begin{lrbox}{\minted@bgbox}
+  \begin{minipage}{\linewidth-2\fboxsep}}
+ {\end{minipage}%
+  \end{lrbox}%
+  \setlength{\topsep}{\bigskipamount}% set the vertical space
+  \trivlist\item\relax % ensure going to a new line
+  \colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}%
+  \endtrivlist % close the trivlist
+ }
+ %-----------------------------------------------%
+
+ \makeatother
 
 
 %%----------------------------------------------------------------------------80
@@ -120,7 +142,10 @@
   \input{sections/03_00_environment}
   \input{sections/03_01_environment_linux}
   \input{sections/03_02_environment_windows}
-  \input{sections/04_basic_concepts.tex}
+  \input{sections/04_00_basic_concepts.tex}
+  \input{sections/04_01_basic_concepts.tex}
+  \input{sections/04_02_basic_concepts.tex}
+  \input{sections/04_03_basic_concepts.tex}
   \input{sections/05_fixed_free_formats.tex}
   \input{sections/06_program_structure.tex}
   \input{sections/07_tpk.tex}
