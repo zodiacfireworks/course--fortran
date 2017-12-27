@@ -1,0 +1,57 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE
+%-----------------------------------------------------------------------------80
+\section{Conceptos básicos}
+
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+
+\subsection{Hello world!}
+\begin{frame}[fragile]{Hello world! y el proceso de compilación}
+ \textbf{Hello world!}
+  \begin{itemize}[<+(1)->]
+   \item Se llama programa a un conjunto de instrucciones, realizadas computacionalmente en un tiempo determinado, aplicadas en la introducción, procesamiento o salida de datos.   
+   \item Un programa en fortran tiene la siguiente forma:
+   \vspace{6pt}
+   \item []
+    \begin{minted}[linenos,autogobble]{fortran}
+     PROGRAM hello_world
+        WRITE(*, *) Message
+     END PROGRAM hello_world
+    \end{minted}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hello world! y el proceso de compilación}
+ \textbf{Scientific Hello world!}
+  \begin{itemize}[<+(1)->]
+   \vspace{6pt}
+   \item []
+    \begin{minted}[linenos,autogobble]{fortran}
+    PROGRAM hello_world
+    IMPLICIT NONE
+
+    ! Angulo de entrada
+    REAL(KIND=4) :: theta
+    
+    ! Resultado de aplicar la función seno 
+    REAL(KIND=4) :: sin_of_theta
+    
+    ! Mensaje
+    CHARACTER(len=*), PARAMETER :: Message = 'Hello World'
+
+    WRITE(*, *) 'Ingrese un ángulo [rad]: '
+    READ(*, *) theta
+    sin_of_theta = SIN(theta)
+    
+    WRITE(*, *) Message
+    WRITE(*, *) "sin(", theta, ") = ", sin_of_theta
+    END PROGRAM hello_world
+    \end{minted}
+  \end{itemize}
+\end{frame}
+
