@@ -1,8 +1,13 @@
 %-----------------------------------------------------------------------------80
-% CONTENT
+% SECTION TITLE|
 %-----------------------------------------------------------------------------80
 
-\subsection{Formatos de escritura de un programa de Fortran}
+\section{Formatos de escritura en Fortran}
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
 
 \begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
   \begin{itemize}[<+(1)->]
@@ -22,24 +27,74 @@
    \item Aplicable a versiones Fortran90 en adelante de extensión f90, f95...  
    \item Permite un máximo de 132 caracteres.
    \item Se emplea el caracter (!) para empezar un comentario, sin que este se tome en cuentra durante la compilación.
+   \item [] 
+    \begin{minted}[linenos,autogobble]{fortran}
+    <instruccion> ! <comentario>
+    \end{minted}
    \item Se emplea el caracter (;) para separar dos instrucciones.
-   \item En caso falte espacio en una línea, el caracter (\&) permite continuar las instrucciones en la siguiente línea, colocándolo al final de la línea anterior y al inicio de la línea por comenzar.
-   \item Aquí falta el apartado 5 !!!!!!!!!
-   \item 
-   \item 
+   \item [] 
+    \begin{minted}[linenos,autogobble]{fortran}
+    <instruccion>; <instruccion>
+    \end{minted}
   \end{itemize}
+\end{frame} 
+
+\begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
+ \begin{itemize}[<+(0)->]
+ \item En caso falte espacio en una línea, el caracter (\&) permite continuar las instrucciones en la siguiente línea, colocándolo al final de la línea anterior y al inicio de la línea por comenzar.
+ \item [] 
+  \begin{minted}[linenos,autogobble]{fortran}
+        <instruccion 1> &
+      & <instruccion 1> &
+      & <instruccion 1>
+        <instruccion 2>
+  \end{minted}
+ \item Las variables y unidades programaticas deben de ser nobradas empleando una combinacion de maximo 31 caracteres siendo el primer caracter una letra. 
+ \item []
+  \begin{minted}[linenos,autogobble]{fortran} 
+      PROGRAM TPK95
+  \end{minted} 
+ \end{itemize}
 \end{frame}
+
 
 \begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
  \textbf{Formato fijo}
   \begin{itemize}[<+(1)->]
    \item Aplicable a versiones anteriores a Fortran90 de extensión f, for...
    \item Permite un máximo de 72 caracteres.
-   \item Se emplea el caracter (C) para comenzar un comentario. 
+   \item Se emplea el caracter (C) para comenzar un comentario.
+   \item []
+    \begin{minted}[linenos,autogobble]{fortran} 
+c --- Comentario
+    \end{minted} 
    \item Se permite una sola instrucción por línea, comenzando a partir del séptimo caracter.
-   \item La continuación de una instrucción en una siguiente línea está dada por algún caracter no alfanumérico en el sexto caracter. 
-   \item Los primeros cinco caracteres en una línea de instrucción se pueden emplear en caso se requiera una etiqueta (número positivo diferente de cero con un máximo de cinco dígitos).
-   \item Apartado 6!!!
+   \item []
+    \begin{minted}[linenos,autogobble]{fortran} 
+c23456789
+      <Instruccion>
+    \end{minted}
   \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Formatos de escritura de un programa de Fortran}
+   \begin{itemize}[<+(0)->]
+   \item La continuación de una instrucción en una siguiente línea está dada por algún caracter no alfanumérico en el sexto caracter.
+    \begin{minted}[linenos,autogobble]{fortran} 
+c23456789
+      <Instruccion muy larga>
+     &<Continuacion de instruccion muy larga>
+    \end{minted}
+   \item Los primeros cinco caracteres en una línea de instrucción se pueden emplear en caso se requiera una etiqueta (número positivo diferente de cero con un máximo de cinco dígitos).
+    \begin{minted}[linenos,autogobble]{fortran} 
+c23456789
+75289 <Instruccion muy larga>
+     &<Continuacion de instruccion muy larga>
+    \end{minted}
+   \item Las variables deben de ser nobradas empleando una combinacion de maximo 6 caracteres siendo el primer caracter una letra.
+    \begin{minted}[linenos,autogobble]{fortran} 
+c23456789
+   12 REAL*8 FUNCTION Fib
+    \end{minted}
+  \end{itemize}
+\end{frame}

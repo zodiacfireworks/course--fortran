@@ -1,6 +1,6 @@
 TEX      = xelatex
-SRCTEX   = lesson001.tex
-OUTTEX   = lesson001.pdf
+SRCTEX   = lesson002.tex
+OUTTEX   = lesson002.pdf
 OUTDIR   = build
 FALGSTEX = --file-line-error --shell-escape --synctex=1
 

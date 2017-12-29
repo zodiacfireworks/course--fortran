@@ -1,0 +1,53 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE|
+%-----------------------------------------------------------------------------80
+
+\section{Expresividad: el algoritmo TPK}
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{EL algoritmo TPK}
+
+\begin{frame}[fragile]{El algoritmo TPK}
+ \begin{itemize}[<+(1)->]
+ \item El algoritmo TPK es el "ejemplo inicial" para una secuencia de aprendizaje en programación. Fue empleado en el informe técnico \href{http://bitsavers.org/pdf/stanford/cs_techReports/STAN-CS-76-562_EarlyDevelPgmgLang_Aug76.pdf}{The Early Development of Programming Languages}  por Donald Knuth y Luis Trabb del departamento de ciencia computacional de la Universidad de Stanford.   
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{El algoritmo TPK}
+ \begin{itemize}[<+(0)->]
+    \item []
+    \begin{minted}[linenos,autogobble]{fortran}  
+    MODULE Functions
+    PUBLIC :: fun
+    CONTAINS
+        FUNCTION fun(t) result (r)
+            REAL, INTENT(IN) :: t
+            REAL  :: r
+            r = SQRT(ABS(t)) + 5.0*t**3
+        END FUNCTION fun
+    END MODULE Functions
+
+    PROGRAM TPK95
+    ! The TPK Algorithm
+    ! F style
+    USE Functions
+    INTEGER :: i
+    REAL    :: y
+    REAL, DIMENSION(0:10) :: a
+    READ *, a
+    DO i = 10, 0, -1 ! Bucle DO con contador hacia atrás
+        y = fun(a(i))
+        IF ( y < 400.0 ) THEN
+            PRINT *, i, y
+        ELSE
+            PRINT *, i, " Too large"
+        END IF
+    END DO
+    END PROGRAM tpk95
+  \end{minted}
+   \end{itemize} 
+\end{frame}
