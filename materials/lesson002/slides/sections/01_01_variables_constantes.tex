@@ -1,0 +1,36 @@
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Variables y constantes}
+
+\begin{frame}[fragile]{Variables y constantes}
+\onslide<0->\textbf{Declaración de variables}
+ \begin{itemize}[<+(0)->]
+  \item La declaración de una o más variables del mismo tipo está dada por la sintaxis\\ 
+   \centering <tipo> ,[<atributo(s)>] [::] <variable(s)> [=<valor>]
+  \item Algunos atributos son:\\ 
+  parameter, save, pointer, target, allocatable, dimension, public, private, external, intrinsic, optional.
+  \vspace{6pt}
+  \item []
+   \begin{minted}[linenos,autogobble]{fortran}
+    CHARACTER(len= 4), PARAMETER :: prompt = ">>> "
+    CHARACTER(len= *), PARAMETER :: message = "Ingresa tu primer nombre [máx 20 car]:"
+   \end{minted}
+  \item[] \rightline {\textit{Véase strings.f95}}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Variables y constantes}
+\onslide<0->\textbf{Declaración de constantes}
+ \begin{itemize}[<+(0)->]
+  \item Si se requiere que una variable que tome un valor definido no suceptible de cambio, se utiliza el atributo parameter. \\ 
+   \begin{minted}[linenos,autogobble]{fortran}
+    CHARACTER, PARAMETER :: NewLine = CHAR(10)
+   \end{minted}
+   \item[] \rightline {\textit{Véase strings.f95}}
+   \vspace{-3pt}
+   \item Las variables pueden ser definidas en función de constantes mediante el atributo parameter.
+ \end{itemize}
+\end{frame}
