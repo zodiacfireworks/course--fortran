@@ -8,14 +8,27 @@
 \begin{frame}[fragile]{Enteros}
 \onslide<0->\textbf{Tipos de enteros}
  \begin{itemize}[<+(0)->]
-  \item 
+  \item La representación de valores enteros se declara con INTEGER.
+  \item Los valores pueden ser guardados usualmente con presición simple, doble o cuádruple.  \item []
+   \begin{minted}[linenos,autogobble]{fortran} 
+    INTEGER, PARAMETER :: K02 = SELECTED_INT_KIND(2)
+    INTEGER, PARAMETER :: K04 = SELECTED_INT_KIND(4)
+    INTEGER, PARAMETER :: K08 = SELECTED_INT_KIND(8)
+    INTEGER, PARAMETER :: K16 = SELECTED_INT_KIND(16)
+
+    INTEGER(kind=K02) :: I02
+    INTEGER(kind=K04) :: I04
+    INTEGER(kind=K08) :: I08
+    INTEGER(kind=K16) :: I16
+   \end{minted}
+  \item[] \rightline {\textit{Véase kind\_integers.f95}}
  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Reales}
 \onslide<0->\textbf{Tipos de reales}
  \begin{itemize}[<+(1)->]
-  \item 
+  \item La representación de número reales se declara con REAL y puede ser de presición estándar o simple presición (sp) y de presición superior, doble (dp) o cuádruple (qp) presició en adelante.
   \item La sintaxis para el tipo real es\\ 
    \centering real(kind=<np>)
   \vspace{6pt}
@@ -30,3 +43,40 @@
  \end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]{Reales}
+ \begin{itemize}[<+(0)->]
+  \item La notación científica para los reales viene dada por los identificadores "e" (sp), "d" (dp) y "q" (qp).  
+  \item []
+   \begin{minted}[linenos,autogobble]{fortran}
+    REAL(kind=4)  :: x = 2.e0       !simple presición
+    REAL(kind=8)  :: y = 4.d-6      !doble presición
+    REAL(kind=16) :: z = -8.q-1000  !cuadruple presición
+   \end{minted}
+  \item Sin embargo, en muchos casos es útil predefinir la clase kind al cambiar de tipo de real variando el valor de np, como por ejemplo 
+  \item []
+   \begin{minted}[linenos,autogobble]{fortran}
+    INTEGER, PARAMETER :: np=16         !np = 4,8 o 16
+    REAL (kind=np) :: X = 2.e-10_np     !e =  e, d o q
+   \end{minted}
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Complejos}
+\onslide<0->\textbf{Tipos de complejos}
+ \begin{itemize}[<+(1)->]
+  \item La representación de números complejos se declara con COMPLEX, e igualmente que los reales, puede presentar una presición simple, doble o cuádruple.
+  \item []
+   \begin{minted}[linenos,autogobble]{fortran}
+    INTEGER :: re = 25
+    REAL(kind= 4) :: im04 = 3.141592
+    REAL(kind= 8) :: im08 = 3.141592
+    REAL(kind=10) :: im10 = 3.141592
+    REAL(kind=16) :: im16 = 3.141592
+    COMPLEX(kind=16) :: z16 = (25, 3.141592)
+   \end{minted}
+  \item[] \rightline {\textit{Véase complex.f95}}
+  \item La notación científica y las declaraciones empleando kind siguen las mismas reglas.
+ \end{itemize}
+\end{frame}

@@ -1,0 +1,69 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE|
+%-----------------------------------------------------------------------------80
+
+\section{Operaciones elementales}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Operaciones elementales}
+\onslide<0->\textbf{Reglas generales}
+\begin{frame}[fragile]{Operaciones elementales}
+ \begin{itemize}[<+(0)->]
+  \item Las operaciones siguen el orden tradicional de las operaciones matemáticas, es decir, primero los términos entre paréntesis, exponentes, multiplicación y adición.
+  \item El uso del símbolo = en el lenguaje Fortran tiene el sentido de asignación mientras que en el uso matemático tiene sentido de igualdad. 
+  \item La asignación de una variable tiene la sintaxis \\
+      \centering <variable> = <expresión>\\
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operaciones aritméticas}
+ \begin{itemize}[<+(0)->]
+  \item Estan permitidas las operaciones entre valores tipo INTEGER, REAL y COMPLEX.
+  \item Las operaciones están dadas por adición (+), sustracción (-), multiplicación (*), división (/) y potenciación (**).
+  \item Los operandos del mismo tipo y clase resultan en otro del mismo tipo y clase.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operaciones aritméticas}
+\onslide<0->\textbf{Operaciones de tipo INTEGER}
+ \begin{itemize}[<+(0)->]
+  \item Las operaciones de tipo INTEGER manejan números enteros dentro de un rango en $\mathbb{Z}$
+  \item La división se obtiene con un resto; es decir\\
+  \centering $\frac{x}{y} = z \Longleftrightarrow  |x| = |z| \cdot |y| + resto $
+  \item La potenciación depende del tipo de variable del exponente. 
+  $$
+  x**n = \left\{ \begin{array}{lcc}
+             \underbrace{x \ast x \ast \cdots \ast x}_\text{$n$ veces} &   si  & n > 0 \\
+             \\ \frac{1}{x \ast \ast (-n)} &  si & n < 0 \\
+             \\ 1 &  si  & x = 0 
+             \end{array}
+   \right.
+  $$
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operaciones aritméticas}
+\onslide<0->\textbf{Conversión de tipos}
+ \begin{itemize}[<+(0)->]
+  \item Los enteros son convertidos en reales o complejos.
+  \item Los reales son convertidos en complejos.
+  \item Los reales o complejos son convertidos en la clase (kind) más alta.
+  \item Al asignar valores (=), la parte derecha se evalúa en el tipo y clase correspondiente, luego es convertida al del tipo y clase de la variable al lado izquierdo.
+  \item[] Por ejemplo
+  \begin{minted}[linenos,autogobble]{fortran}
+   INTEGER          :: n, m 
+   REAL             :: a, b
+   REAL(kind=8)     :: x, y
+   COMPLEX          :: c
+   COMPLEX(kind=8)  :: z
+   :
+   a = (x*(n**c))/z
+   :
+   \end{minted}
+
+ \end{itemize}
+\end{frame}
