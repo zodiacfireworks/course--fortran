@@ -1,0 +1,72 @@
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Operaciones elementales}
+
+
+\begin{frame}[fragile]{Funciones intrínsecas \textit{built in functions}}  
+ \begin{itemize}[<+(0)->]
+  \item Funciones predefinidas independientes del compilador. 
+    \item Una función intrínseca monoargumental se expresa de la forma \\
+      \centering <función>(<argumento>)\\ 
+  \item Las funciones intrínsecas pueden no tener argumento o tener varios.
+  \item Las funciones biargumentales más destacadas son la función cmplx y la función mod.
+  \item [-] cmplx asigna un valor complejo a partir de valores reales. 
+   \begin{minted}[linenos,autogobble]{fortran}
+    !Sea z = (x,y) una variable compleja
+    cmplx (<expres_1>, <expres_2>) !expres son de tipo REAL
+   \end{minted}
+  \vspace{0.2cm}
+  \item [-] mod es el valor que corresponde al resto de una división, es decir\\
+      \centering $n = n/m + mod(n, m) $
+   \begin{minted}[linenos,autogobble]{fortran}
+    !Sea n de tipo INTEGER o REAL y m del mismo tipo y distinto de 0
+    mod (<expres_1>, <expres_2>) !expres son de tipo INTEGER o REAL
+   \end{minted}  
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones intrínsecas \textit{built in functions}}  
+    \begin{table}[]
+    \centering
+    \label{Tabla_funcionesintr}
+    \resizebox{10.5cm}{!} {
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Función         & Argumento                     & Resultado         & Descripción                                                       \\ \hline
+    abs             & real, complex, integer        & real, integer     & |x|, |z|, |n|                                                     \\ \hline
+    sqrt            & real, complex                 & real, complex     & ($\sqrt{x}$, x $\geq$ 0), ($\sqrt{x}$, z $\in \mathbb{C}$)        \\ \hline
+    int             & real                          & integer           & Parte entera de un real x                                         \\ \hline
+    fraccion        & real                          & real              & Parte fraccional de un real x                                     \\ \hline
+    real            & complex                       & real              & $\mathbb{R}$e(z), z $\in \mathbb{C}$                              \\ \hline
+    aimag           & complex                       & real              & $\mathbb{I}$m(z), z $\in \mathbb{C}$                              \\ \hline              
+    conjg           & complex                       & complex           & $\bar{z}$, z $\in \mathbb{C}$                                     \\ \hline 
+    cos             & real complex                  & real complex      & $(\cos x, x \in \mathbb{R})$, $(\cos z, z \in \mathbb{C})$        \\ \hline 
+    sin             & real complex                  & real complex      & $(\sin x, x \in \mathbb{R})$, $(\cos z, z \in \mathbb{C})$        \\ \hline 
+    tan             & real complex                  & real complex      & $(\tan x, x \in \mathbb{R})$, $(\tan z, z \in \mathbb{C})$        \\ \hline 
+    acos            & real complex                  & real complex      & $(\arccos x, x \in \mathbb{R})$, $(\arccos z, z \in \mathbb{C})$  \\ \hline 
+    asin            & real complex                  & real complex      & $(\arcsin x, x \in \mathbb{R})$, $(\arcsin z, z \in \mathbb{C})$  \\ \hline 
+    atan            & real complex                  & real complex      & $(\arctan x, x \in \mathbb{R})$, $(\arctan z, z \in \mathbb{C})$     \\ \hline 
+    exp             & real complex                  & real complex      & $(\exp x, x \in \mathbb{R})$, $(\exp z, z \in \mathbb{C})$        \\ \hline 
+    log             & real complex                  & real complex      & $(\log x, x > 0)$, $(\log z, z \in \mathbb{C}, z \neq 0)$          \\ \hline 
+    log10           & real                          & real              & $(\log_{10} x, x > 0$                                             \\ \hline 
+    \end{tabular}}
+    \caption*{Funciones intrínsecas más relavantes}
+    \end{table}
+\end{frame}
+
+
+\begin{frame}[fragile]{Operaciones con caracteres}
+ \begin{itemize}[<+(0)->] 
+    \item La asignación del tipo CHARACTER es de la forma \\
+      \centering <variable> = <expresión>\\ 
+    \item [] donde <variable> y <expresión> son de tipo CHARACTER y pueden tener longitud $len = n$ o $len = m$ respectivamente; $n, m \in \mathbb{Z}^{+}$ 
+        \item [-] Si $n \leq m$, se asigna a la <variable> los n primeros caracteres de la <expresión> de izquierda a derecha, eliminando la diferencia $m-n$.
+        \item [-] Si $n > m$, se asigna a la <variable> de izquierda a derecha la cadena de caracteres de <expresión>, completando los últimos $n-m$ caracteres de la derecha con espacios.
+    \item asd
+    \item asd
+ \end{itemize}
+
+\end{frame}

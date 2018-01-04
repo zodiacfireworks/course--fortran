@@ -67,3 +67,27 @@
 
  \end{itemize}
 \end{frame}
+
+
+\begin{frame}[fragile]{Operaciones aritméticas}
+\onslide<0->\textbf{Conversiones de tipo más significativas}
+    \begin{table}[]
+    \centering
+    \label{Tabla_comparacion}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    Conversión      & Mecanismo de Conversión               \\ \hline
+    x = n           & x = n                                 \\ \hline
+    x = a           & x = a                                 \\ \hline
+    n = x           & $  n = \left\{ \begin{array}{lcccc}
+                 m &   si  & m \leq x \leq m+1   & y & x \geq 0 \\
+             \\ -m &   si  & m \leq -x \leq m+1  & y & x < 0 
+             \end{array}
+   \right.$                                                 \\ \hline
+    a = x           & a = round(x)                          \\ \hline
+    a = c           & a = $\mathbb{Re}$(z)                   \\ \hline
+    z = x           & z = (x, 0)                            \\ \hline              
+    \end{tabular}
+    
+    \end{table}
+\end{frame}
