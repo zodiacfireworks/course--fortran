@@ -7,10 +7,11 @@
 
 \begin{frame}[fragile]{La cláusula Implicit}
  \begin{itemize}[<+(0)->]
-  \item Si existen variables que no han sido definidas, el tipo de variable depende de la letra inicial. Por lo cual
+  \item Si existen variables que no han sido definidas, el tipo de variable depende de la letra inicial. Por lo cual...
   \item[-] i, j, k, l, m, n representan variables enteras.
-  \item[-] Las demás letras representan variables reales de presición simple.
+  \item[-] las demás letras representan variables reales de presición simple.
   \item El carácter implicito puede ser modificado empleando la instrucción IMPLICIT bajo la siguiente sintaxis:\\
+  \centering IMPLICIT <tipo> (<caracter(es)\_1>,...,<caracter(es)\_k>)
   \item Debido a que el compilador puede reconocer variables por defecto, se recomienda emplear la instrucción IMPLICIT NONE, especificando todas las variables y evitando errores con el código fuente.
  \end{itemize}
 \end{frame}

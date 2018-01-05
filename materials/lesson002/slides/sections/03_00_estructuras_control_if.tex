@@ -1,0 +1,56 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE|
+%-----------------------------------------------------------------------------80
+
+\section{Estructuras de control}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Estructuras de control}
+
+\begin{frame}[fragile]{Estructuras de control} 
+ \begin{itemize}[<+(1)->]
+  \item Son esquemas compuestos de entrada y salida.
+  \item Se componen de instrucciones que actúan de forma secuencial, selectiva y/o repetitiva.
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Condiciones: $IF$ } 
+ \begin{itemize}[<+(1)->]
+  \item Permite la ejecución de una o más instrucciones bajo ciertas condiciones. 
+  \item Emplea variables y expresiones lógicas. (Si... entonces...) 
+  \item Permite la construcción de código en bloques. (IF, THEN, ENDIF)
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Condiciones: $IF$ } 
+ \begin{itemize}[<+(0)->]
+  \item []  
+  \begin{minted}[linenos,autogobble]{fortran}
+    PROGRAM FizzBuzz  
+    IMPLICIT NONE
+    INTEGER :: I
+    CHARACTER(len=40) :: CharacterI
+
+    WRITE(*, '(A)') "Ingrese un número entero:"
+    READ(*, *) I
+
+    IF (mod(I,3) == 0 .AND. mod(I,5) == 0) THEN
+        WRITE(*, '(A)') 'FizzBuzz'
+    ELSE IF (mod(I,3) == 0) THEN
+        WRITE(*, '(A)') 'Fizz'
+    ELSE IF (mod(I,5) == 0) THEN
+        WRITE(*, '(A)') 'Buzz'
+    ELSE
+        WRITE(CharacterI, '(I10)') I
+        WRITE(*, '(A)') ADJUSTL(CharacterI)
+    END IF
+    END PROGRAM FizzBuzz
+  \end{minted}
+ \end{itemize}
+\end{frame}

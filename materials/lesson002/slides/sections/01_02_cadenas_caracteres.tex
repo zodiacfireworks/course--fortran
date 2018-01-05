@@ -7,18 +7,21 @@
 
 \begin{frame}[fragile]{Cadenas de caracteres y valores lógicos}
 \onslide<0->\textbf{Declaración de cadenas de caracteres}
-\onslide<4->\textbf{Declaración de valores lógicos}
- \begin{itemize}[<+(0)->]
+ \begin{itemize}[<+(1)->]
   \item La declaración de una variable de tipo character está dada por la sintaxis\\ 
-   \centering CHARACTER[(len=<longitud>)],[<atributo(s)>][::]<variable(s)>[=<valor>]
-  \vspace{6pt}
+   \centering CHARACTER[(len=<long>)],[<atributos>][::]<variables>[=<valor>]
+  \vspace{0.2cm}
   \item []
    \begin{minted}[linenos,autogobble]{fortran}
     CHARACTER(kind=ascii, len=26) :: Alphabet
     CHARACTER(kind= ucs4, len=30) :: HelloWorld
    \end{minted}
-  \item[] \rightline {\textit{Véase kind\_character.f95}}
-  \item \item La declaración de una variable lógica está dada por\\ 
+ \rightline {\textit{Véase kind\_character.f95}}
+ \end{itemize}
+
+\onslide<4->\textbf{Declaración de valores lógicos}
+   \begin{itemize}[<+(2)->]
+  \item La declaración de una variable lógica está dada por\\ 
    \centering LOGICAL <variable(s)>
  \end{itemize}
 \end{frame}

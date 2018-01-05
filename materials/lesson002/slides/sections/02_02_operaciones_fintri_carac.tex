@@ -10,20 +10,20 @@
  \begin{itemize}[<+(0)->]
   \item Funciones predefinidas independientes del compilador. 
     \item Una función intrínseca monoargumental se expresa de la forma \\
-      \centering <función>(<argumento>)\\ 
+      \centering <función> (<argumento>)\\ 
   \item Las funciones intrínsecas pueden no tener argumento o tener varios.
-  \item Las funciones biargumentales más destacadas son la función cmplx y la función mod.
-  \item [-] cmplx asigna un valor complejo a partir de valores reales. 
+  \item Las funciones biargumentales más destacadas son la función CMPLX y la función MOD.
+  \item [-] CMPLX asigna un valor complejo a partir de valores reales. 
    \begin{minted}[linenos,autogobble]{fortran}
     !Sea z = (x,y) una variable compleja
-    cmplx (<expres_1>, <expres_2>) !expres son de tipo REAL
+    CMPLX (<expres_1>, <expres_2>) !expres son de tipo REAL
    \end{minted}
   \vspace{0.2cm}
-  \item [-] mod es el valor que corresponde al resto de una división, es decir\\
-      \centering $n = n/m + mod(n, m) $
+  \item [-] MOD es el valor que corresponde al resto de una división, es decir\\
+      \centering $n = n/m + MOD(n, m) $
    \begin{minted}[linenos,autogobble]{fortran}
     !Sea n de tipo INTEGER o REAL y m del mismo tipo y distinto de 0
-    mod (<expres_1>, <expres_2>) !expres son de tipo INTEGER o REAL
+    MOD (<expres_1>, <expres_2>) !expres son de tipo INTEGER o REAL
    \end{minted}  
  \end{itemize}
 \end{frame}
@@ -59,14 +59,71 @@
 
 
 \begin{frame}[fragile]{Operaciones con caracteres}
- \begin{itemize}[<+(0)->] 
+     \begin{itemize}[<+(0)->] 
     \item La asignación del tipo CHARACTER es de la forma \\
       \centering <variable> = <expresión>\\ 
-    \item [] donde <variable> y <expresión> son de tipo CHARACTER y pueden tener longitud $len = n$ o $len = m$ respectivamente; $n, m \in \mathbb{Z}^{+}$ 
-        \item [-] Si $n \leq m$, se asigna a la <variable> los n primeros caracteres de la <expresión> de izquierda a derecha, eliminando la diferencia $m-n$.
-        \item [-] Si $n > m$, se asigna a la <variable> de izquierda a derecha la cadena de caracteres de <expresión>, completando los últimos $n-m$ caracteres de la derecha con espacios.
-    \item asd
-    \item asd
- \end{itemize}
+    \item [] donde <variable> y <expresión> son de tipo CHARACTER y pueden tener longitud ($len = n$) o ($len = m$) respectivamente; $n, m \in \mathbb{Z}^{+}$ 
+    \vspace{0.2cm}
+    \item [-] Si $n \leq m$, se asigna a la <variable> los n primeros caracteres de la <expresión> de izquierda a derecha, eliminando la diferencia $m-n$.
+    \item [-] Si $n > m$, se asigna a la <variable> de izquierda a derecha la cadena de caracteres de <expresión>, completando los últimos $n-m$ caracteres de la derecha con espacios. 
+     \end{itemize}
 
 \end{frame}
+
+\begin{frame}[fragile]{Operaciones con caracteres}
+\textbf{Operadores binarios}
+ \begin{itemize}[<+(1)->]  
+    \item Concatenación: dado por el operador //.
+    \item Comparación: dado por los operadores == y /=.
+ \end{itemize}
+
+\onslide<3->\textbf{Partes de cadenas de caracteres}
+ \begin{itemize}[<+(2)->]  
+    \item Si <expresión> representa una cadena de caracteres $c_{1}...c_{k}...c_{l}...c_{n}$ de $n$ caracteres, con $1 \leq k \leq l \leq n$, podemos obtener lo siguiente:
+     \begin{minted}[linenos,autogobble]{fortran}
+     <expresión> (k:l) !cadena "c_k...c_l"
+     <expresión> (:l) !cadena "c_1...c_k...c_l"
+     <expresión> (k:) !cadena "c_k...c_l...c_n"
+     \end{minted}  
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operaciones con caracteres}
+\onslide<0->\textbf{Operaciones sobre cadenas de caracteres}
+ \begin{itemize}[<+(2)->]
+  \item La sintaxis para instrucciones de tipo CHARACTER es \\
+    \centering <instrucción> (<expresión>)
+  \item []
+  \begin{table}[]
+    \centering
+    \label{Tabla_funcionesintr}
+    \resizebox{10.5cm}{!} {
+    \begin{tabular}{|c|c|p{6cm}|}
+    \hline
+    Instrucción  & Resultado  & Descripción                                                                                                    \\ \hline
+    len          & integer    & Define la longitud una cadena de caracteres                                                                    \\ \hline
+    trim         & character  & Suprime los epacios del final de una cadena                                                                    \\ \hline
+    adjustl      & character  & Si hay espacios al inicio de una cadena, los suprime desplazando el resto de la cadena a la izquierda.        \\ \hline
+    \end{tabular}}
+    \caption*{Instrucciones de cadenas de caracteres}
+    \end{table}
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Operaciones con caracteres}
+ \onslide<0->\textbf{La instrucción INDEX}
+  \begin{itemize}[<+(1)->]
+   \item La instrucción INDEX proporciona como resultado un valor tipo INTEGER a partir de una cadena de tipo CHARACTER.
+   \item La sintaxis es de la forma \\
+    \centering INDEX (<expresión\_1>, <expresión\_2>).
+
+   \item Si <expresión\_2> es parte de <expresión\_1> entonces indica su primera posición; sino el valor es 0.
+   \item []
+    \begin{minted}[linenos,autogobble]{fortran}
+     INDEX ('Fortran','tra') ! INDEX dará 4   
+    \end{minted} 
+  \end{itemize}
+\end{frame}
+
+

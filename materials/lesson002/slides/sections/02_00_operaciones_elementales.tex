@@ -10,9 +10,10 @@
 %Definición-------------------------------------------------------------------80
 
 \subsection{Operaciones elementales}
-\onslide<0->\textbf{Reglas generales}
-\begin{frame}[fragile]{Operaciones elementales}
- \begin{itemize}[<+(0)->]
+
+\begin{frame}[fragile]{Operaciones elementales} 
+\textbf{Reglas generales}
+ \begin{itemize}[<+(1)->]
   \item Las operaciones siguen el orden tradicional de las operaciones matemáticas, es decir, primero los términos entre paréntesis, exponentes, multiplicación y adición.
   \item El uso del símbolo = en el lenguaje Fortran tiene el sentido de asignación mientras que en el uso matemático tiene sentido de igualdad. 
   \item La asignación de una variable tiene la sintaxis \\
@@ -30,8 +31,8 @@
 
 \begin{frame}[fragile]{Operaciones aritméticas}
 \onslide<0->\textbf{Operaciones de tipo INTEGER}
- \begin{itemize}[<+(0)->]
-  \item Las operaciones de tipo INTEGER manejan números enteros dentro de un rango en $\mathbb{Z}$
+ \begin{itemize}[<+(1)->]
+  \item Las operaciones de tipo INTEGER manejan números enteros dentro de un rango en $\mathbb{Z}$.
   \item La división se obtiene con un resto; es decir\\
   \centering $\frac{x}{y} = z \Longleftrightarrow  |x| = |z| \cdot |y| + resto $
   \item La potenciación depende del tipo de variable del exponente. 
@@ -48,12 +49,13 @@
 
 \begin{frame}[fragile]{Operaciones aritméticas}
 \onslide<0->\textbf{Conversión de tipos}
- \begin{itemize}[<+(0)->]
+ \begin{itemize}[<+(1)->]
   \item Los enteros son convertidos en reales o complejos.
   \item Los reales son convertidos en complejos.
   \item Los reales o complejos son convertidos en la clase (kind) más alta.
   \item Al asignar valores (=), la parte derecha se evalúa en el tipo y clase correspondiente, luego es convertida al del tipo y clase de la variable al lado izquierdo.
-  \item[] Por ejemplo
+  \vspace{0.2cm}
+  \item[]
   \begin{minted}[linenos,autogobble]{fortran}
    INTEGER          :: n, m 
    REAL             :: a, b
@@ -64,7 +66,6 @@
    a = (x*(n**c))/z
    :
    \end{minted}
-
  \end{itemize}
 \end{frame}
 
