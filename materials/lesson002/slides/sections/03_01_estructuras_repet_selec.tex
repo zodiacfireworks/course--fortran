@@ -1,0 +1,62 @@
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Repeticiones: DO, DO WHILE, DO FROM X TO Y}
+
+\begin{frame}[fragile]{Repeticiones: DO, DO WHILE, DO}  
+ \begin{itemize}[<+(0)->]
+  \item Permiten la ejecución repetitiva de una o más instrucciones bajo un número determinado de veces o una expresión lógica.
+  \item Entre estas estructuras destacan
+  \item [] \textbf{DO FROM X TO Y?} (desde-hasta) \\
+   \begin{minted}[linenos,autogobble]{fortran}
+    DO <variable> = <inicio>, <fin>, <incremento>
+      bloque de declaraciones
+    END DO 
+   \end{minted}
+  \item [] \textbf{DO WHILE} (mientras) \\ 
+   \begin{minted}[linenos,autogobble]{fortran}
+    DO WHILE <(expresiones logicas)> 
+      bloque de declaraciones
+    END DO 
+   \end{minted}
+  \item [] \textbf{DO?} (repetir-hasta)
+   \begin{minted}[linenos,autogobble]{fortran}
+    DO 
+      bloque de declaraciones
+       IF <expresion logica> EXIT
+    END DO 
+   \end{minted}
+ \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Repeticiones: DO, DO WHILE, DO} 
+ \begin{itemize}[<+(0)->]
+  \item []
+  \begin{minted}[linenos,autogobble]{fortran}
+      ! Do finito
+      ! Igual que un bucle FOR en otros lenguajes
+            DO I = 3, N, 1
+                Fibn = Fib2 + Fib1
+
+                IF (Fibn < 0) THEN
+                    WRITE(*, '(I5,2X,A)') I, "Overflow error!"
+                    EXIT
+                END IF
+
+                WRITE(strFibn, '(I64)') Fibn
+                WRITE(*, '(I5,2X,A)') I, ADJUSTL(strFibn)
+
+                Fib1 = Fib2
+                Fib2 = Fibn
+            END DO
+  \end{minted}
+  \rightline {\textit{Véase fibonacci.f95}}
+ \end{itemize}
+\end{frame}
+
+
+

@@ -22,10 +22,7 @@ PROGRAM Calculator
         WRITE(*, '(A)', advance='no')  'B = '
         READ(*, *) B
 
-        WRITE(*, '(A)') 'Ingrese un perador [+,-,*,/]:'
-        READ '(A)', Operator
-
-        Selector: SELECT CASE (Operator)
+        WRITE(*, '(A)') 'Ingrese un perSelector: SELECT CASE (Operator)
             CASE ('+') Selector
                 C = A + B
             CASE ('-') Selector
@@ -36,7 +33,10 @@ PROGRAM Calculator
                 C = A * B
             CASE DEFAULT Selector
                 EXIT
-        END SELECT Selector
+        END SELECT Selectorador [+,-,*,/]:'
+        READ '(A)', Operator
+
+        
 
         WRITE(Result, *) C
         WRITE(*, "(A)") "Resultado"

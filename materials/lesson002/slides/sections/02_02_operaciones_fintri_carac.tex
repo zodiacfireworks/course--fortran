@@ -77,20 +77,21 @@
     \item Comparación: dado por los operadores == y /=.
  \end{itemize}
 
-\onslide<3->\textbf{Partes de cadenas de caracteres}
+\onslide<4->\textbf{Partes de cadenas de caracteres}
  \begin{itemize}[<+(2)->]  
     \item Si <expresión> representa una cadena de caracteres $c_{1}...c_{k}...c_{l}...c_{n}$ de $n$ caracteres, con $1 \leq k \leq l \leq n$, podemos obtener lo siguiente:
-     \begin{minted}[linenos,autogobble]{fortran}
-     <expresión> (k:l) !cadena "c_k...c_l"
-     <expresión> (:l) !cadena "c_1...c_k...c_l"
-     <expresión> (k:) !cadena "c_k...c_l...c_n"
+    \vspace{0.2cm} 
+    \begin{minted}[linenos,autogobble]{fortran}
+     <expresion> (k:l) !cadena "c_k...c_l"
+     <expresion> (:l) !cadena "c_1...c_k...c_l"
+     <expresion> (k:) !cadena "c_k...c_l...c_n"
      \end{minted}  
  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Operaciones con caracteres}
 \onslide<0->\textbf{Operaciones sobre cadenas de caracteres}
- \begin{itemize}[<+(2)->]
+ \begin{itemize}[<+(1)->]
   \item La sintaxis para instrucciones de tipo CHARACTER es \\
     \centering <instrucción> (<expresión>)
   \item []

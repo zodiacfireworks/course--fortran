@@ -1,0 +1,54 @@
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Selección: SWITCH CASE - \textit{The infamous} GO TO}
+
+\begin{frame}[fragile]{Selección: SWITCH CASE}  
+ \begin{itemize}[<+(0)->]
+  \item Permite la ejecución selectiva de una o más instrucciones o alternativas en función de expresiones lógicas.
+  \item Se presenta una estructura simple (IF), doble (IF-ELSE) y multialternativa (SELECT CASE).
+  \vspace{0.2cm}
+  \item [] 
+   \begin{minted}[linenos,autogobble]{fortran}
+    Selector: SELECT CASE (Operator)
+                CASE ('+') Selector
+                    C = A + B
+                CASE ('-') Selector
+                    C = A - B
+                CASE ('/') Selector
+                    C = A / B
+                CASE ('*') Selector
+                    C = A * B
+                CASE DEFAULT Selector
+                    EXIT
+              END SELECT Selector
+   \end{minted}
+   \rightline {\textit{Véase calculator.f95}}
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{\textit{The infamous} TO GO}  
+ \begin{itemize}[<+(0)->]
+  \item Permite la ramificación o división de una instrucción hacia otra parte específica del código.
+  \item Puede emplearse de forma lógica-condicional junto con IF. 
+  \vspace{0.2cm}
+  \item [] 
+   \begin{minted}[linenos,autogobble]{fortran}
+      PROGRAM GOTOER
+  1   WRITE(*, *) 0
+      GOTO 2
+  9   WRITE(*, *) 8
+      GOTO 10
+    .
+    .
+  7   WRITE(*, *) 6
+      GOTO 8
+ 10   WRITE(*, *) 9
+      END PROGRAM GOTOER
+   \end{minted}
+   \rightline {\textit{Véase gotoer.f}}
+ \end{itemize}
+\end{frame}

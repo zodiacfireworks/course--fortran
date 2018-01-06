@@ -1,0 +1,25 @@
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+%Definición-------------------------------------------------------------------80
+
+\subsection{Tipos derivados}
+
+\begin{frame}[fragile]{La cláusula Implicit}
+ \begin{itemize}[<+(0)->]
+  \item Disponibles a partir de Fortran90 (solo se podía trabajar con INTEGER, REAL, LOGICAL Y CHARACTER).
+  \item Son expresiones derivadas de datos, es decir, creadas a parir de los tipos intrínsecos.
+  \item La sintaxis para declarar un nuevo tipo es de la forma
+  \item [] 
+   \begin{minted}[linenos,autogobble]{fortran}
+    type <Nombre del nuevo tipo>
+         <Instruccion declaracion variable(s)>
+         <Instruccion declaracion variable(s)>
+         :
+         <Instruccion declaracion variable(s)>
+    end type
+   \end{minted}
+  \item La sintaxis para declarar una o más variables de un tipo derivado se expresa de la forma\\
+      \centering type (<nombre tipo>),[<atributos>]::<var\_1,var\_2...>=[<valor>]
+ \end{itemize}
+\end{frame}
