@@ -1,0 +1,133 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE
+%-----------------------------------------------------------------------------80
+
+\section{Declaración de arreglos}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+
+%Definición-------------------------------------------------------------------80
+
+\subsection{Definición - tipos de arreglos}
+
+\begin{frame}[fragile]{Definición y tipos de arreglos}
+ \begin{itemize}[<+(0)->]
+  \item Un arreglo es el conjunto de una variable con un identificador a los elementos de una lista o grupo.
+  \item Se pueden formar arreglos con distinta cantidad de dimensiones.
+  \item [-] Arreglo unidimensional: indexado de valores a un índice.\\ 
+  \centering $x_{ni}, x_{ni+1}, \ldots, x_{ns-1}, x_{ns}$
+  \item [ ] ubicados por el índice i y acotados por $ns \geq ni$. 
+  \item [-] Arreglo bidimensional: indexado de valores a dos índices. 
+  \item [ ] ubicados por los índices i, j ("filas y columnas") y acotados por ni y ns, mi y ms respectivamente.
+  \item [-] Arreglo $n$-dimensional: lista indexada a $n$ índices $i_{1}, i_{2}, \ldots, i_{n}$ acotados por un valor inferior y uno superior. 
+ \end{itemize}
+\end{frame} 
+
+
+\begin{frame}[fragile]{Declaración de arreglos}
+ \begin{itemize}[<+(0)->]
+ \item La forma más simple de declarar un arreglo es la estática, al definir el número y rango de índices en la declaración.
+ \item La notación para el rango de un arreglo es\\ 
+  \centering $ni:ns$ que significa $ni \leq i \leq ns$.
+ \item La declaración de un arreglo, de valores de un tipo dado, se realiza mediante el atributo DIMENSION o directamente sobre la variable de a cuerdo a lo siguiente: \\ 
+ \vspace{0.1cm}
+  <tipo>,DIMENSION(<decl. índices>),[<otros atrib.>]::<lista var> \\ 
+  <tipo>,[<otros atrib.>]::<variable>(<decl. índices>),<otras var>    
+ \vspace{0.2cm}
+  \item []
+  \begin{minted}[linenos,autogobble]{fortran}
+    INTEGER  , PARAMETER :: NR=5
+    INTEGER  , PARAMETER :: NC=10
+    INTEGER  , PARAMETER :: NF=3
+    INTEGER :: Row,Column,Floor
+    CHARACTER*1 , DIMENSION(1:NR,1:NC,1:NF) :: Seats=' '
+  \end{minted}        
+  \rightline {\textit{Véase seatplan.f95}}
+ \end{itemize}
+\end{frame} 
+
+%Asignación-------------------------------------------------------------------80
+
+\begin{frame}[fragile]{Declaración de arreglos}
+\textbf{Asignación de valores a arreglos}
+ \begin{itemize}[<+(1)->]
+ \item La definición de los valores de un arreglo pueden darse componente por componente o de manera global.
+ \item La asignación componente por componente se da la misma forma que una variable independiente.
+ \vspace{0.2cm}
+ \item[]
+   \begin{minted}[linenos,autogobble]{fortran}
+    REAL(kind=8), DIMENSION::vector
+    REAL(kind=4)::matriz(2,2)
+    :
+    vector(1)=1.d0; vector(2)=2.d0; vector(3)=3.d0
+    matriz(1,1)=1.; matriz(2,1)=0
+    matriz(1,2)=0.; matriz(2,2)=vector(2)*vector(3)
+   \end{minted}
+ \end{itemize}
+\end{frame} 
+
+
+\begin{frame}[fragile]{Declaración de arreglos}
+ \begin{itemize}[<+(0)->]
+  \item La asignación de manera global, en el caso de arreglos unidimensionales, se denota con delimitadores (/y/) de la forma \\ 
+  \centering <arreglo>=(/<listado de (ns-ni)+1 expresiones>/) \\ 
+  \item [] donde <arreglo> es de DIMENSION(ni:ns).
+  \vspace{0.2cm}
+  \item []
+  \begin{minted}[linenos,autogobble]{fortran}
+    REAL , DIMENSION(12) :: RainFall = &
+    (/3.1,2.0,2.4,2.1,2.2,2.2,1.8,2.2,2.7,2.9,3.1,3.1/)
+  \end{minted}
+  \rightline {\textit{Véase rainfalloperations.f95}}        
+ \end{itemize}
+\end{frame} 
+
+%Dinámica---------------------------------------------------------------------80
+
+\begin{frame}[fragile]{Declaración de arreglos}
+\textbf{Declaración Dinámica de tableros}
+ \begin{itemize}[<+(1)->]
+  \item Asignación de memoria de manera dinámica durante la ejecución de un programa (Fortran 90 en adelante).
+  \item La creación de estos arreglos pueden resumirse en tres momentos: 
+  \item [-] La notificación, asignando un tipo al arreglo; la forma (\# de índices) a través de DIMENSION junto con la opción ALLOCATABLE.
+  \vspace{0.2cm}
+  \item []
+    \begin{minted}[linenos,autogobble]{fortran}
+    REAL, DIMENSION(:), ALLOCATABLE::vector
+    COMPLEX, DIMENSION(:,:), ALLOCATABLE::matriz
+    CHARACTER(len=8), DIMENSION(:,:,:), ALLOCATABLE::grilla
+    \end{minted}
+  \item [-] La creación del arreglo con el rango de índices asignado, se realiza mediante la instrucción ALLOCATE.
+  \vspace{0.2cm}
+  \item [] 
+    \begin{minted}[linenos,autogobble]{fortran}
+    :
+    n=10
+    :
+    ALLOCATE(vector(3:n), matrix(1:n,0:n-1), grilla(3,4,2))
+    \end{minted}
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Declaración de arreglos}
+ \begin{itemize}[<+(0)->]
+  \item [] La instrucción ALLOCATE puede crear varios arreglos al mismo tiempo.
+  \item [-] Finalmente la destrucción o anulación del arreglo, se realiza mediante la instrucción DEALLOCATE
+  \vspace{0.2cm}
+  \item [] 
+    \begin{minted}[linenos,autogobble]{fortran}
+    DEALLOCATE(vector, matriz)
+    DEALLOCATE(grilla)
+    \end{minted}
+  \item Es posible saber si el espacio de memoria para el arreglo es suficiente, agregando la opción stat a la instrucción ALLOCATE.
+  \vspace{0.2cm}
+  \item [] 
+    \begin{minted}[linenos,autogobble]{fortran}
+    ALLOCATE(vector(1:n), stat=error)
+    \end{minted}
+  \item [] entonces error = 0 y el arreglo se habrá creado.    
+ \end{itemize}
+\end{frame}

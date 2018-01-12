@@ -1,0 +1,146 @@
+%%----------------------------------------------------------------------------80
+%% Preamble
+%%----------------------------------------------------------------------------80
+\documentclass[10pt,aspectratio=96]{beamer}
+\usepackage[some]{background}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{appendixnumberbeamer}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{fontawesome}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hologo}
+\usepackage{lipsum}
+\usepackage{multirow}
+\usepackage{pdflscape}
+\usepackage{pgfcalendar}
+\usepackage{pgfplots}
+\usepackage{polyglossia}
+\usepackage{tabularx}
+\usepackage{xcolor-material}
+\usepackage{xcolor}
+\usepackage{xspace}
+
+% \usepackage{float}
+\usepackage{caption}
+\usepackage[outputdir=build]{minted}
+\usepackage{hyperref}
+
+
+%%----------------------------------------------------------------------------80
+%% Settings
+%%----------------------------------------------------------------------------80
+% Poligrossia pacakge settings -----------------------------------------------80
+\setmainlanguage{spanish}
+
+
+% Hyperref package settings --------------------------------------------------80
+\hypersetup{
+  pdftitle={Programaci\'{o}n en FORTRAN - Lecci\'{o}n 1},
+  pdfauthor={Mart\'{i}n Josemar\'{i}a Vuelta Rojas},
+  pdfpagelayout=OneColumn,
+  pdfnewwindow=true,
+  pdfdisplaydoctitle=true,
+  pdfstartview=XYZ,
+  plainpages=false,
+  unicode=true,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=3,
+  breaklinks=true,
+  colorlinks=true,
+  pdfborder={0 0 0}
+}
+
+
+% Caption package settings ---------------------------------------------------80
+\captionsetup[figure]{labelfont=bf,justification=centering}
+
+
+% PGFPlots package settings --------------------------------------------------80
+\pgfplotsset{compat=1.14}
+\usepgfplotslibrary{dateplot}
+\usepgfplotslibrary{groupplots}
+
+
+% Beamer package settings ----------------------------------------------------80
+\usetheme{metropolis}
+
+
+% Minted package settings ----------------------------------------------------80
+\usemintedstyle{manni}
+\setminted{
+  fontsize=\scriptsize,
+  baselinestretch=1.15
+}
+
+%%----------------------------------------------------------------------------80
+%% Customizations
+%%----------------------------------------------------------------------------80
+
+%----------FONDO DE CÓDIGO MINTED----------------%
+\newminted[mintedbash]{bash}{linenos=true, autogobble=true, texcl=true, bgcolor=grey-300, fontsize=auto }
+
+%---------------------------------------------%
+
+
+%%----------------------------------------------------------------------------80
+%% Custom commands definitions
+%%----------------------------------------------------------------------------80
+
+\makeatletter
+\definecolor{green-600}{HTML}{43A047}
+\definecolor{grey-300}{HTML}{E0E0E0}
+
+%----------FONDO DE CÓDIGO MINTED----------------%
+\renewenvironment{minted@colorbg}[1]
+ {\def\minted@bgcol{#1}%
+  \noindent
+  \begin{lrbox}{\minted@bgbox}
+  \begin{minipage}{\linewidth-2\fboxsep}}
+ {\end{minipage}%
+  \end{lrbox}%
+  \setlength{\topsep}{\bigskipamount}% set the vertical space
+  \trivlist\item\relax % ensure going to a new line
+  \colorbox{\minted@bgcol}{\usebox{\minted@bgbox}}%
+  \endtrivlist % close the trivlist
+ }
+ %-----------------------------------------------%
+
+ \makeatother
+
+
+%%----------------------------------------------------------------------------80
+%% Document
+%%----------------------------------------------------------------------------80
+% Global document settings ---------------------------------------------------80
+% Document body --------------------------------------------------------------80
+\begin{document}
+  % -*- BEGIN: Title Frame
+  \title{Programación en FORTRAN}
+  \subtitle{
+    Nivel Básico - Sesión 3
+  }
+  \date{\today}
+  \author{Martin Josemaría Vuelta Rojas}
+  \institute{SoftButterfly}
+  \maketitle
+  % -*- END: Title Frame
+
+  % -*- BEGIN: TOC
+  \begin{frame}{Contenido}
+    \setbeamertemplate{section in toc}[sections numbered]
+    \tableofcontents[hideallsubsections]
+  \end{frame}
+  % -*- END: TOC
+
+  \input{sections/01_declaracion_arreglos}
+  \input{sections/02_asignacion_arreglos}
+  \input{sections/03_instrucciones_operaciones_exclusivas}
+  \input{sections/04_operaciones_matriciales}
+  \input{sections/05_modificadores_formato}
+
+\end{document}

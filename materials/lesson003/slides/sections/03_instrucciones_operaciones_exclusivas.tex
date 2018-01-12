@@ -1,0 +1,156 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE|
+%-----------------------------------------------------------------------------80
+
+\section{Instrucciones y operaciones exclusivas de arreglos}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+
+\subsection{Instrucciones de control / Funciones intrínsecas}
+
+
+\begin{frame}[fragile]{Instrucciones de control} 
+    \begin{itemize}[<+(0)->]
+        \item Fortran permite asignar de valores en elementos específicos de un arreglo, bajo una determinada condición, con la instrucción WHERE. 
+        \item La sintaxis es la siguiente \\
+            \centering WHERE (<arreglo control>) <arreglo>=<expresión> 
+            \leftline {donde los elementos de <arreglo control> y <arreglo> son tipo LOGICAL}
+        \item [] Por ejemplo: \\ 
+            Sea A un arreglo de $2 \times 2$ 
+            $$
+                A = \left( \begin{array}{cc}
+                    100. & 10. \\
+                    1. & 0. \end{array} \right)
+            $$
+        \item [] 
+            \begin{minted}[linenos,autogobble]{fortran}
+                :
+                REAL, DIMENSION(2,2)::A,B
+                :
+                WHERE(A>0) B=log10(A)
+                : 
+            \end{minted}
+        \item [] dará como resultado
+            $$
+                A = \left( \begin{array}{cc}
+                    2. & 1. \\
+                    0. & 0. \end{array} \right)
+            $$   
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Instrucciones de control} 
+    \begin{itemize}[<+(0)->]
+        \item Es posible permitir asignaciones a valores de tipo LOGICAL, del arreglo de control, utilizando la instrucción ELSE WHERE.
+        \item La sintaxis es la siguiente: \\
+            \begin{minted}[linenos,autogobble]{fortran}
+            WHERE (<arreglo control>)
+                   <bloque de instrucciones> 
+            ELSE WHERE 
+                   <bloque de instrucciones>
+            END WHERE
+            \end{minted}
+        \item [] Del ejemplo anterior, tenemos:
+            \begin{minted}[linenos,autogobble]{fortran}
+                :
+                REAL, DIMENSION(2,2)::A,B
+                :
+                B=A
+                :
+                WHERE(A>0) 
+                    B=log10(A)
+                ELSE WHERE
+                    B=-100
+                ELSE WHERE
+                :
+            \end{minted} 
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Instrucciones de control} 
+    \begin{itemize}[<+(0)->]
+        \item [] que dará como resultado
+            $$
+                B = \left( \begin{array}{cc}
+                    2. & 1. \\
+                    0. & -100. \end{array} \right)
+            $$
+        \item Considerando un arreglo de control \emph{Acontrol} de tipo LOGICAL, tenemos
+    \end{itemize}
+    \onslide<3->\textbf{Algunas funciones de asignación de control}
+    \begin{itemize}[<+(1)->]
+        \item all \\ 
+        \begin{minted}[linenos,autogobble]{fortran}
+        all(Acontrol)       !valor .true. si todos los elementos de Acontrol
+                            !tienen valor .true.. Sino el valor es .false.
+        \end{minted}
+        \item any \\ 
+        \begin{minted}[linenos,autogobble]{fortran}
+        any(Acontrol)       !valor .true. si al menos un elemento de Acontrol
+                            !tiene valor .true.. Sino el valor es .false.
+        \end{minted}
+        \item count \\ 
+        \begin{minted}[linenos,autogobble]{fortran}
+        count(Acontrol)     !valor INTEGER indicando el número de elementos 
+                            !de Acontrol, cuyos valores son .true.
+        \end{minted}                         
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Instrucciones de control}
+    \begin{itemize}[<+(0)->]
+        \item Agregando la opción \emph{dim} a las funciones de control, es posible reducir los arreglos a unos de forma unidimensional (vectores).
+        \item [] Por ejemplo 
+            $$
+                Acontrol = \left( \begin{array}{cc}
+                    .true.  & .false.  \\
+                    .false. & .false. \\
+                    .true.  & .true. \end{array} \right)
+            $$
+        \item Considerando un arreglo de control \emph{Acontrol} de tipo LOGICAL, tenemos
+            \begin{minted}[linenos,autogobble]{fortran}
+                all(Acontrol,dim=1)     !da (/.false.,.false.,.true./)
+                all(Acontrol,dim=2)     !da (/.false.,.false./)
+                any(Acontrol,dim=1)     !da (/.true.,.false.,.true./)
+                any(Acontrol,dim=2)     !da (/.true.,.true./)
+                count(Acontrol,dim=1)   !da (/1,0,2/)
+                count(Acontrol,dim=2)   !da (/2,1/)
+            \end{minted}                         
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Funciones intrínsecas} 
+    \begin{itemize}[<+(0)->]
+        \item Fortran, en sus versiones 90 y posteriores, cuenta con funciones especiales para arreglos.
+        \item [] Tomando como ejemplo el siguiente arreglo:
+            $$
+                A = \left( \begin{array}{ccc}
+                    5.      &  3.   &  1.  \\
+                    8.      & 12.   & 10.  \\
+                    9.      & 11.   &  7.  \\
+                    4.      &  6.   &  2.  \\
+                \end{array} \right)
+            $$
+            cuya declaración es: \\ 
+            \vspace{0.15cm}
+            \begin{minted}[linenos,autogobble]{fortran}
+                REAL, DIMENSION(0:3,2:4)::A
+            \end{minted}
+        \item [] \textbf{lbound} 
+        \item Esta función da como resultado un vector de tipo INTEGER, cuyos valores son los mínimos que pueden tomar los índices del arreglo.
+            \begin{minted}[linenos,autogobble]{fortran}
+                lbound(A) !asigna los valores (/0,2/)
+            \end{minted}
+            Con la opción \emph{dim} se obtiene el mínimo valor que toma cada índice.
+            \begin{minted}[linenos,autogobble]{fortran}
+                lbound(A,dim=1) !asigna: 0
+                lbound(A,dim=2) !asigna: 2
+            \end{minted}
+    \end{itemize}
+\end{frame}

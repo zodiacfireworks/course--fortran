@@ -28,13 +28,24 @@
    \rightline {\textit{Véase calculator.f95}}
  \end{itemize}
 \end{frame}
-
+::go to <etiqueta>:<etiqueta> .. ! se llega a este lugar:donde<etiqueta>es un valor n ́umericointegerde 1 a 99999
 
 \begin{frame}[fragile]{\textit{The infamous} TO GO}  
  \begin{itemize}[<+(0)->]
-  \item Permite la ramificación o división de una instrucción hacia otra parte específica del código.
-  \item Puede emplearse de forma lógica-condicional junto con IF. 
-  \vspace{0.2cm}
+  \item Permite la ramificación o división de una instrucción hacia otra parte específica del código, saltando intrucciones entre el GOTO y la instrucción etiquetada.
+  \item Puede emplearse de forma lógica-condicional bajo la siguiente sintaxis\\
+    \begin{minted}[linenos,autogobble]{fortran}
+    :
+    GOTO <etiqueta> 
+    : 
+    <etiqueta> !lugar de llegada
+    :
+    \end{minted}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\textit{The infamous} TO GO}  
+ \begin{itemize}[<+(0)->]
   \item [] 
    \begin{minted}[linenos,autogobble]{fortran}
       PROGRAM GOTOER

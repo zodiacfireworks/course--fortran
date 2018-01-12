@@ -1,0 +1,100 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE|
+%-----------------------------------------------------------------------------80
+
+\section{Asignación en arreglos}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+
+\subsection{Subarreglos-Expresiones y operaciones}
+
+
+\begin{frame}[fragile]{Asignación en arreglos}
+ \begin{itemize}[<+(0)->]
+  \item La asignación de valores a un arreglo también puede darse por subarreglos, es decir, bloques de arreglos o arreglos locales.
+  \item [] 
+  \begin{minted}[linenos,autogobble]{fortran}
+  REAL, DIMENSION(3,2)::matriz1
+  REAL, DIMENSION(-1:1,0:1)::matriz2
+  :
+  matriz1(1,1)=1        ! asignacion a un solo elemento
+  matriz1=1             ! asignacion a todo el tablero con el valor 1
+  matriz2=matriz(2,2)   ! asignacion de todo el tablero matriz2 con
+                        ! el valor de matriz(2,2)
+  matriz2=matriz1       ! asignacion, copiando los valores de la matriz
+  \end{minted}
+ \end{itemize}
+\end{frame}
+
+%Subarreglos------------------------------------------------------------------80
+
+\begin{frame}[fragile]{Asignación en arreglos}
+ \textbf{Subarreglos}
+  \begin{itemize}[<+(1)->]
+  \item Los subarreglos se identifican mediante el uso de la sintaxis \\ 
+   \centering <inicio>:<final>:<incremento>
+  \item [-] Si <inicio> se omite (:), toma el primer valor del arreglo. 
+  \item [-] Si <final> se omite (:), toma el último valor del arreglo.
+  \item [-] Si <incremento> se omite (:), toma el valor de 1.
+  \vspace{0.15cm}
+  \item[]
+  \begin{minted}[linenos,autogobble]{fortran}
+    REAL, DIMENSION(1:3)::vector
+    REAL, DIMENSION(1:3,1:3)::matriz
+    :
+    WRITE(*,*)vector(1:2)        !los dos primeros elementos
+    WRITE(*,*)matriz(1:1,1:3)    !la primera fila
+    WRITE(*,*)matriz(1:3:2,1:3)  !la primera y tercera fila
+    WRITE(*,*)matriz(3:1:-2,1:3) !la tercera y primera fila
+    WRITE(*,*)matriz(:2,:2)      !el primer bloque 2x2
+    :
+  \end{minted}
+ \end{itemize}
+\end{frame}
+
+%Expresiones y operaciones----------------------------------------------------80
+
+\begin{frame}[fragile]{Asignación en arreglos}
+ \textbf{Expresiones de asignación y operaciones aritméticas}
+  \begin{itemize}[<+(1)->]
+  \item Las expresiones entre arreglos  deben implicar arreglos de la misma forma.
+  \item Los elementos de los arreglos están relacionados por relaciones de orden, prestablecida sobre los índices, como se evidencia en una matriz por las columnas y filas.
+  \item Las operaciones aritméticas y funciones intrínsecas ($\cos, \exp$, etc.) operan por elemento. 
+  \begin{minted}[linenos,autogobble]{fortran}
+    REAL, DIMENSION(1:3)::vect          !vector
+    REAL, DIMENSION(1:3,1:3)::matr1     !matriz 1
+    REAL, DIMENSION(0:2,-1:1)::matr2    !matriz 2
+    :
+    matr1(:,1)=matr2(0,:)+vect   !El resultado va a la columna1 la de matr1, de 
+                                 !la suma de la fila0 de la matr2 con el vector.
+    matr1=matr1*matr2            !Los productos son calculados individualmente
+    matr1=cos(matr2)
+    matr1=exp(matr2)
+    matr2(:,0)=sqrt(vector)
+  \end{minted}
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Asignación en arreglos}
+ \textbf{Vectores sub-índices}
+  \begin{itemize}[<+(1)->]
+  \item Es posible también identificar los elementos de un arreglo a través de un vector índice, de elementos tipos INTEGER. 
+  \vspace{0.15cm}
+  \item []
+  \begin{minted}[linenos,autogobble]{fortran}
+    INTEGER, DIMENSION(1:3)::indice::(/2,4,6/)
+    REAL, DIMENSION(1:10,1:10)::matriz
+    :
+    PRINT*,matriz(5,indice)       !escribe los elementos (5,2), (5,4) y (5,6)
+    PRINT*,matriz(indice,indice)  !los elementos en el orden (2,2), (4,2), (6,2)
+                                  !(2,4), (4,4), (6,4), (2,6), (4,6) y (6,6)
+    matriz(indice,5)=matriz(1:5:2,6)    !Se asigna a matriz (2,5) el
+                                        !valor de matriz(1,6),
+                                        !a  matriz(4,5) el valor matriz(3,6)
+                                        !y a matriz(6,5) el valor matriz(5,6)
+  \end{minted}
+ \end{itemize}
+\end{frame}

@@ -1,0 +1,40 @@
+%-----------------------------------------------------------------------------80
+% SECTION TITLE|
+%-----------------------------------------------------------------------------80
+
+\section{Operadores matriciales}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+
+
+\begin{frame}[fragile]{Operadores matriciales} 
+    \begin{itemize}[<+(0->]
+        \item Fortran permite asignar de valores en elementos específicos de un arreglo, bajo una determinada condición, con la instrucción WHERE. 
+        \item La sintaxis es la siguiente \\
+            \centering WHERE (<arreglo control>) <arreglo>=<expresión> 
+            \leftline {donde los elementos de <arreglo control> y <arreglo> son tipo LOGICAL}
+        \item [] Por ejemplo: \\ 
+            Sea A un arreglo de $2 \times 2$ 
+            $$
+                A = \left( \begin{array}{cc}
+                    100. & 10. \\
+                    1. & 0. \end{array} \right)
+            $$
+        \item [] 
+            \begin{minted}[linenos,autogobble]{fortran}
+                :
+                REAL, DIMENSION(2,2)::A,B
+                :
+                WHERE(A>0) B=log10(A)
+                : 
+            \end{minted}
+        \item [] dará como resultado
+            $$
+                A = \left( \begin{array}{cc}
+                    2. & 1. \\
+                    0. & 0. \end{array} \right)
+            $$   
+    \end{itemize}
+\end{frame}
