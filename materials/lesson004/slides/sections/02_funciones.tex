@@ -1,0 +1,29 @@
+-----------------------------------------------------------------------------80
+% SECTION TITLE
+%-----------------------------------------------------------------------------80
+
+\section{Funciones}  
+
+%-----------------------------------------------------------------------------80
+% CONTENT
+%-----------------------------------------------------------------------------80
+
+
+\begin{frame}[fragile]{Funciones}
+ \begin{itemize}[<+(0)->]
+  \item Una función es un tipo particular de subrutina, a la que se accede directiamente sin utilizar la instrucción CALL.
+  \item Algunas ventajas del uso de funciones es
+  \item [-]Permite el uso de una acción, incluidas las funciones intrínsecas.
+  \item [-]Permite dedicar una parte del código exclusivamente a resolver un problema.
+  \item [-]Permite construir una biblioteca de funciones o módulos para resolver sub-problemas particulares para un mejor orden y mayor efectividad. 
+  \item La estructura sintáxica de una función es la siguiente:
+        \begin{minted}[linenos,autogobble]{fortran}
+        [<tipo>] FUNCTION <nombre> [(<argumentos ficticios>)] [result (<resultado>)]
+        : ! declaración función (nombre o resultado)
+        : ! declaración argumentos ficticios
+        : ! declaración objetos locales
+        : ! instrucciones ejecutables
+        END FUNCTION <nombre>
+        \end{minted}
+ \end{itemize}
+\end{frame}
