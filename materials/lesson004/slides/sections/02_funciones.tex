@@ -1,4 +1,4 @@
------------------------------------------------------------------------------80
+%-----------------------------------------------------------------------------80
 % SECTION TITLE
 %-----------------------------------------------------------------------------80
 
@@ -12,7 +12,7 @@
 \begin{frame}[fragile]{Funciones}
  \begin{itemize}[<+(0)->]
   \item Una función es un tipo particular de subrutina, a la que se accede directiamente sin utilizar la instrucción CALL.
-  \item Algunas ventajas del uso de funciones es
+  \item Algunas ventajas del uso de funciones son
   \item [-]Permite el uso de una acción, incluidas las funciones intrínsecas.
   \item [-]Permite dedicar una parte del código exclusivamente a resolver un problema.
   \item [-]Permite construir una biblioteca de funciones o módulos para resolver sub-problemas particulares para un mejor orden y mayor efectividad. 
@@ -24,6 +24,110 @@
         : ! declaración objetos locales
         : ! instrucciones ejecutables
         END FUNCTION <nombre>
+        \end{minted}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones} 
+    \begin{table}[]
+    \centering
+    \label{Tabla_funcionesintr1}
+    \resizebox{9cm}{!} {
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Función              & Descripción                                  & Ejemplo         \\ \hline
+    abs                  & |x|, |z|, |n|                                & Y=ABS(X)        \\ \hline
+    sqrt                 & ($\sqrt{x}$, x $\geq$ 0),                    & Y=SQRT(X)       \\ \hline
+    int                  & Parte entera de un real x                    & J=INT(X)        \\ \hline  
+    cos                  & $(\cos x, x \in \mathbb{R})$                 & Y=COS(X)        \\ \hline 
+    sin                  & $(\sin x, x \in \mathbb{R})$                 & Y=SIN(X)        \\ \hline 
+    tan                  & $(\tan x, x \in \mathbb{R})$                 & Y=TAN(X)        \\ \hline 
+    acos                 & $(\arccos x, x \in \mathbb{R})$              & Y=ACOS(X)       \\ \hline 
+    asin                 & $(\arcsin x, x \in \mathbb{R})$              & Y=ASIN(X)       \\ \hline 
+    atan                 & $(\arctan x, x \in \mathbb{R})$              & Y=ATAN(X)       \\ \hline
+    atan2                & $(\arctan (A/B), A, B \in \mathbb{R})$       & Y=ATAN2(A,B)    \\ \hline 
+    exp                  & $(\exp x, x \in \mathbb{R})$                 & Y=EXP(X)        \\ \hline 
+    log                  & $(\log x, x > 0)$                            & Y=LOG(X)        \\ \hline 
+    log10                & $(\log_{10} x, x > 0$                        & Y=LOG10(X)      \\ \hline 
+    \end{tabular}}
+    \caption*{Funciones intrínsecas}
+    \end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones}
+\textbf{Funciones genéricas}
+ \begin{itemize}[<+(1)->]
+  \item Son aquellas funciones intrínsecas que pueden ser llamadas con cualquier argumento numérico de cualquier tipo KIND.
+        \begin{minted}[linenos,autogobble]{fortran}
+            PROGRAM Functions01
+            IMPLICIT NONE
+            COMPLEX :: C=(1,1)
+            REAL    :: R=10.9
+            INTEGER :: I=-27
+              PRINT *,ABS(C)
+              PRINT *,ABS(R)
+              PRINT *,ABS(I)
+            END PROGRAM Functions01
+        \end{minted}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones}
+ \begin{itemize}[<+(0)->]
+  \item [] \textbf{Funciones elementales}
+  \item Estas funciones trabajan con argumentos escalares y arreglos, es decir, ya sean simple o multiple valuados.
+  \vspace{0.15cm}
+  \item[]
+      \begin{minted}[linenos,autogobble]{fortran}
+      PROGRAM Functions02
+      REAL , DIMENSION(5) :: X = (/1.0,2.0,3.0,4.0,5.0/)
+        PRINT *,' Sine of ', X ,' = ',SIN(X)
+      END PROGRAM Functions02
+      \end{minted}
+  \item [] \textbf{Funciones de transformación}
+  \item Son aquellas cuyos argumentos son arreglos, actuando sobre los mismos.
+  \vspace{0.15cm}
+  \item [] 
+        \begin{minted}[linenos,autogobble]{fortran}
+            PROGRAM Functions0304     
+            IMPLICIT NONE
+            REAL , DIMENSION(5) :: X = (/1.0,2.0,3.0,4.0,5.0/)
+            ! Transformational function dotproduct
+                PRINT *,' Dot product of X with X is'
+                PRINT *,' ',DOT_PRODUCT(X,X)
+            ! Transformational function sum
+                PRINT *,' Sum of ', X ,' = ',SUM(X)
+            END PROGRAM Functions0304
+        \end{minted}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones}
+ \begin{itemize}[<+(0)->]
+  \item [] \textbf{Puntos a tener en cuenta}
+  \item 
+  \vspace{0.15cm}
+  \item[]
+      \begin{minted}[linenos,autogobble]{fortran}
+      PROGRAM Functions02
+      REAL , DIMENSION(5) :: X = (/1.0,2.0,3.0,4.0,5.0/)
+        PRINT *,' Sine of ', X ,' = ',SIN(X)
+      END PROGRAM Functions02
+      \end{minted}
+  \item [] \textbf{Funciones de transformación}
+  \item Son aquellas cuyos argumentos son arreglos, actuando sobre los mismos.
+  \vspace{0.15cm}
+  \item [] 
+        \begin{minted}[linenos,autogobble]{fortran}
+            PROGRAM Functions0304     
+            IMPLICIT NONE
+            REAL , DIMENSION(5) :: X = (/1.0,2.0,3.0,4.0,5.0/)
+            ! Transformational function dotproduct
+                PRINT *,' Dot product of X with X is'
+                PRINT *,' ',DOT_PRODUCT(X,X)
+            ! Transformational function sum
+                PRINT *,' Sum of ', X ,' = ',SUM(X)
+            END PROGRAM Functions0304
         \end{minted}
  \end{itemize}
 \end{frame}
