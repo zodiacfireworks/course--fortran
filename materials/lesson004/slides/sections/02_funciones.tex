@@ -102,32 +102,65 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Funciones}
- \begin{itemize}[<+(0)->]
-  \item [] \textbf{Puntos a tener en cuenta}
-  \item 
-  \vspace{0.15cm}
-  \item[]
-      \begin{minted}[linenos,autogobble]{fortran}
-      PROGRAM Functions02
-      REAL , DIMENSION(5) :: X = (/1.0,2.0,3.0,4.0,5.0/)
-        PRINT *,' Sine of ', X ,' = ',SIN(X)
-      END PROGRAM Functions02
-      \end{minted}
-  \item [] \textbf{Funciones de transformación}
-  \item Son aquellas cuyos argumentos son arreglos, actuando sobre los mismos.
-  \vspace{0.15cm}
-  \item [] 
-        \begin{minted}[linenos,autogobble]{fortran}
-            PROGRAM Functions0304     
-            IMPLICIT NONE
-            REAL , DIMENSION(5) :: X = (/1.0,2.0,3.0,4.0,5.0/)
-            ! Transformational function dotproduct
-                PRINT *,' Dot product of X with X is'
-                PRINT *,' ',DOT_PRODUCT(X,X)
-            ! Transformational function sum
-                PRINT *,' Sum of ', X ,' = ',SUM(X)
-            END PROGRAM Functions0304
-        \end{minted}
+\begin{frame}[fragile]{Funciones predefinidas}
+ \textbf{Funciones de consulta}
+ \begin{itemize}[<+(1)->]
+  \item Estas funciones retornan información sobre sus argumentos. Pueden subclasificarse en BIT, CHARACTER, NUMERIC, ARRAY, POINTER y ARGUMENT PRESENCE.
+   \begin{table}[]
+    \centering
+    \label{Tabla_funciones_predefinidas}
+    \resizebox{9cm}{!} {
+      \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Bit}                  & BIT\_SIZE                                 \\ \hline
+        \textbf{Character}            & LEN                                       \\ \hline
+        \textbf{Numeric}              & DIGITS, EPSILON, EXPONENT, FRACTION,      \\
+                                      & HUGE, KIND, MAXEXPONENT, MINEXPONENT,     \\
+                                      & NEAREST, PRECISION, RADIX, RANGE,         \\
+                                      & RRSPACING, SCALE, SET\_EXPONENT,          \\
+                                      & SELECTED\_INT\_KIND, SELECTED\_REAL\_KIND,\\ 
+                                      & SPACING, TINY                             \\ \hline
+        \textbf{Array}                & ALLOCATED, LBOUND, SHAPE, SIZE, UBOUND    \\ \hline  
+        \textbf{Pointer}              & ASSOCIATED, NULL                          \\ \hline 
+        \textbf{Argument}             & PRESENT                                   \\
+        \textbf{present}              &                                           \\ \hline
+      \end{tabular}}
+    \end{table}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones predefinidas}
+ \textbf{Transferencia y conversión de funciones}
+ \begin{itemize}[<+(1)->]
+  \item Estas funciones convierten datos de un tipo y KIND a otro tipo y otro KIND.
+   \begin{table}[]
+    \centering
+    \label{Tabla_funciones_predefinidas}
+    \resizebox{9cm}{!} {
+      \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Transferencia}  & ACHAR, AIMAG, AINT, ANINT, CHAR, CMPLX, CONJG,\\        
+        \textbf{y}              & DBLE, IACHAR, IBITS, ICHAR, INT, LOGICAL,\\                                  \\
+        \textbf{conversión}     & NINT, REAL, TRANSFER.                                                 \\ \hline
+      \end{tabular}}
+    \end{table}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones predefinidas}
+ \textbf{Transferencia y conversión de funciones}
+ \begin{itemize}[<+(1)->]
+  \item Estas funciones convierten datos de un tipo y KIND a otro tipo y otro KIND.
+   \begin{table}[]
+    \centering
+    \label{Tabla_funciones_predefinidas}
+    \resizebox{9cm}{!} {
+      \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Transferencia}  & ACHAR, AIMAG, AINT, ANINT, CHAR, CMPLX, CONJG,\\        
+        \textbf{y}              & DBLE, IACHAR, IBITS, ICHAR, INT, LOGICAL,\\                                  \\
+        \textbf{conversión}     & NINT, REAL, TRANSFER.                                                 \\ \hline
+      \end{tabular}}
+    \end{table}
  \end{itemize}
 \end{frame}

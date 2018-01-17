@@ -11,9 +11,9 @@
   \hspace{1cm} \item [-] Enlazado
 
   \item El proceso de compilación en fortran posee la siguiente sintaxis:
-  \item [] \begin{mintedbash} 
-            fcomp [options] file1 [file2] [...] [fileN]
-           \end{mintedbash}
+   \begin{mintedbash} 
+    fcomp [options] file1 [file2] [...] [fileN]
+   \end{mintedbash}
   \item [-] fcomp $\Rightarrow$ denota el comando para llamar al compilador. (gfortran, ifort, ...)
   \item [-] options $\Rightarrow$ opciones que permite el compilador. (-o, -f, -c, ...)
   \item [-] file $\Rightarrow$ denota el archivo con su respectiva extensión (.f90, .f95, .o, ...)    
@@ -32,7 +32,8 @@ en otro lenguaje de programación (código máquina), ambos equivalentes.
 \end{frame}
 
 
-\begin{frame}[fragile]{Compilación} 
+\begin{frame}[fragile]{Compilación}
+
   \begin{figure}
     \includegraphics[width=1\textwidth]{./resources/compilation_op.png}
     \caption{Diagrama de bloques del proceso de compilación}
