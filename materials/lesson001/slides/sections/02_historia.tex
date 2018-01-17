@@ -95,7 +95,7 @@
 \begin{frame}[fragile]{Orígenes}
     \textbf{Algoritmo TPK en FORTRAN I}
     \begin{itemize}
-    \item []  
+    \item []
      \begin{minted}[linenos,autogobble]{fortran}
       C      THE TPK ALGORITHM
       C      FORTRAN I STYLE
@@ -138,7 +138,7 @@
 \begin{frame}[fragile]{La estándarización}
     \textbf{Algoritmo TPK en FORTRAN 77}
     \begin{itemize}
-    \item []   
+    \item []
      \begin{minted}[linenos,autogobble]{fortran}
              PROGRAM TPK
      C       THE TPK ALGORITHM
@@ -147,9 +147,9 @@
              READ (5,*) A
              DO 10 I = 10, 0, -1
                      Y = FUN(A(I))
-                     IF ( Y . LT. 400) THEN
+                     IF ( Y .LT. 400) THEN
                               WRITE(6,9) I,Y
-       9                      FORMAT(I10. F12.6)
+       9                      FORMAT(I10.F12.6)
                      ELSE
                               WRITE (6,5) I
        5                      FORMAT(I10,' TOO LARGE')
@@ -169,7 +169,7 @@
 \begin{frame}[fragile]{La estándarización}
     \textbf{Algoritmo TPK en FORTRAN 90}
     \begin{itemize}
-    \item []  
+    \item []
      \begin{minted}[linenos,autogobble]{fortran}
             PROGRAM TPK
      !      The TPK Algorithm
@@ -199,11 +199,11 @@
 \end{frame}
 
 \begin{frame}[fragile]{La estándarización}
-    \textbf{Algoritmo TPK en FORTRAN 90}
+    \textbf{Algoritmo TPK en FORTRAN 95}
     \begin{itemize}
-    \item []  
+    \item []
      \begin{minted}[linenos,autogobble]{fortran}
-            module Functions  
+            module Functions
             public :: fun
             contains
                function fun(t) result (r)
@@ -221,6 +221,17 @@
             real                  :: y
             real, dimension(0:10) :: a
             read *, a
+      !     Continua
+     \end{minted}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{La estándarización}
+    \textbf{Algoritmo TPK en FORTRAN 95}
+    \begin{itemize}
+    \item []
+     \begin{minted}[linenos,autogobble,firstnumber=20]{fortran}
+      !     Continuacion
             do i = 10, 0, -1      ! Backwards
                y = fun(a(i))
                if ( y < 400.0 ) then
@@ -233,7 +244,6 @@
      \end{minted}
     \end{itemize}
 \end{frame}
-
 
 % Actualidad -----------------------------------------------------------------80
 \subsection{En la actualidad}
@@ -279,4 +289,3 @@
     \item \textbf{WG5: }\url{https://wg5-fortran.org/}
   \end{itemize}
 \end{frame}
-
