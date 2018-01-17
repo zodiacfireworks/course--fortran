@@ -13,7 +13,8 @@
       \centering <función> (<argumento>)\\ 
   \item Las funciones intrínsecas pueden no tener argumento o tener varios.
   \item Las funciones biargumentales más destacadas son la función CMPLX y la función MOD.
-  \item [-] CMPLX asigna un valor complejo a partir de valores reales. 
+  \item [-] CMPLX asigna un valor complejo a partir de valores reales.
+  \vspace{0.1cm} 
    \begin{minted}[linenos,autogobble]{fortran}
     !Sea z = (x,y) una variable compleja
     CMPLX (<expres_1>, <expres_2>) !expres son de tipo REAL
@@ -21,6 +22,7 @@
   \vspace{0.2cm}
   \item [-] MOD es el valor que corresponde al resto de una división, es decir\\
       \centering $n = n/m + MOD(n, m) $
+  \vspace{0.15cm} 
    \begin{minted}[linenos,autogobble]{fortran}
     !Sea n de tipo INTEGER o REAL y m del mismo tipo y distinto de 0
     MOD (<expres_1>, <expres_2>) !expres son de tipo INTEGER o REAL
@@ -94,7 +96,9 @@
  \begin{itemize}[<+(1)->]
   \item La sintaxis para instrucciones de tipo CHARACTER es \\
     \centering <instrucción> (<expresión>)
-  \item []
+ \end{itemize}
+
+\onslide<3-> 
   \begin{table}[]
     \centering
     \label{Tabla_funcionesintr}
@@ -108,7 +112,6 @@
     \end{tabular}}
     \caption*{Instrucciones de cadenas de caracteres}
     \end{table}
- \end{itemize}
 \end{frame}
 
 
