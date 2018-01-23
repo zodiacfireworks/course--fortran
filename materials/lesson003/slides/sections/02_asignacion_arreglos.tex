@@ -14,6 +14,7 @@
 \begin{frame}[fragile]{Asignación en arreglos}
  \begin{itemize}[<+(0)->]
   \item La asignación de valores a un arreglo también puede darse por subarreglos, es decir, bloques de arreglos o arreglos locales.
+  \vspace{0.15 cm}
   \item [] 
   \begin{minted}[linenos,autogobble]{fortran}
   REAL, DIMENSION(3,2)::matriz1
@@ -59,10 +60,12 @@
 \begin{frame}[fragile]{Asignación en arreglos}
  \textbf{Expresiones de asignación y operaciones aritméticas}
   \begin{itemize}[<+(1)->]
-  \item Las expresiones entre arreglos  deben implicar arreglos de la misma forma.
+  \item Las expresiones entre arreglos  deben crear arreglos de la misma forma.
   \item Los elementos de los arreglos están relacionados por relaciones de orden, prestablecida sobre los índices, como se evidencia en una matriz por las columnas y filas.
-  \item Las operaciones aritméticas y funciones intrínsecas ($\cos, \exp$, etc.) operan por elemento. 
-  \begin{minted}[linenos,autogobble]{fortran}
+  \item Las operaciones aritméticas y funciones intrínsecas ($\cos, \exp$, etc.) operan por elemento.
+  \vspace{0.15 cm} 
+  \item []
+   \begin{minted}[linenos,autogobble]{fortran}
     REAL, DIMENSION(1:3)::vect          !vector
     REAL, DIMENSION(1:3,1:3)::matr1     !matriz 1
     REAL, DIMENSION(0:2,-1:1)::matr2    !matriz 2
@@ -73,7 +76,7 @@
     matr1=cos(matr2)
     matr1=exp(matr2)
     matr2(:,0)=sqrt(vector)
-  \end{minted}
+   \end{minted}
  \end{itemize}
 \end{frame}
 
@@ -84,7 +87,7 @@
   \item Es posible también identificar los elementos de un arreglo a través de un vector índice, de elementos tipos INTEGER. 
   \vspace{0.15cm}
   \item []
-  \begin{minted}[linenos,autogobble]{fortran}
+   \begin{minted}[linenos,autogobble]{fortran}
     INTEGER, DIMENSION(1:3)::indice::(/2,4,6/)
     REAL, DIMENSION(1:10,1:10)::matriz
     :
@@ -95,6 +98,6 @@
                                         !valor de matriz(1,6),
                                         !a  matriz(4,5) el valor matriz(3,6)
                                         !y a matriz(6,5) el valor matriz(5,6)
-  \end{minted}
+   \end{minted}
  \end{itemize}
 \end{frame}

@@ -16,9 +16,8 @@
         \item Fortran permite asignar de valores en elementos específicos de un arreglo, bajo una determinada condición, con la instrucción WHERE. 
         \item La sintaxis es la siguiente \\
             \centering WHERE (<arreglo control>) <arreglo>=<expresión> 
-            \leftline {donde los elementos de <arreglo control> y <arreglo> son tipo LOGICAL}
-        \item [] Por ejemplo: \\ 
-            Sea A un arreglo de $2 \times 2$ 
+        \item [] donde los elementos de <arreglo control> y <arreglo> son tipo LOGICAL.
+        \item [] Por ejemplo: Sea A un arreglo de $2 \times 2$ 
             $$
                 A = \left( \begin{array}{cc}
                     100. & 10. \\
@@ -37,7 +36,7 @@
                 A = \left( \begin{array}{cc}
                     2. & 1. \\
                     0. & 0. \end{array} \right)
-            $$   
+            $$
     \end{itemize}
 \end{frame}
 
@@ -46,6 +45,7 @@
     \begin{itemize}[<+(0)->]
         \item Es posible permitir asignaciones a valores de tipo LOGICAL, del arreglo de control, utilizando la instrucción ELSE WHERE.
         \item La sintaxis es la siguiente: \\
+          \vspace{0.1cm}
             \begin{minted}[linenos,autogobble]{fortran}
             WHERE (<arreglo control>)
                    <bloque de instrucciones> 
@@ -79,7 +79,7 @@
                     2. & 1. \\
                     0. & -100. \end{array} \right)
             $$
-        \item Considerando un arreglo de control \emph{Acontrol} de tipo LOGICAL, tenemos
+        \item Considerando un arreglo de control \emph{Acontrol} de tipo LOGICAL, tenemos:
     \end{itemize}
     \onslide<3->\textbf{Algunas funciones de asignación de control}
     \begin{itemize}[<+(1)->]
@@ -105,14 +105,15 @@
 \begin{frame}[fragile]{Instrucciones de control}
     \begin{itemize}[<+(0)->]
         \item Agregando la opción \emph{dim} a las funciones de control, es posible reducir los arreglos a unos de forma unidimensional (vectores).
-        \item [] Por ejemplo 
+        \item [] Por ejemplo: 
             $$
                 Acontrol = \left( \begin{array}{cc}
                     .true.  & .false.  \\
                     .false. & .false. \\
                     .true.  & .true. \end{array} \right)
             $$
-        \item Considerando un arreglo de control \emph{Acontrol} de tipo LOGICAL, tenemos
+        \item Considerando un arreglo de control \emph{Acontrol} de tipo LOGICAL, tenemos:
+         \vspace{0.12cm}
             \begin{minted}[linenos,autogobble]{fortran}
                 all(Acontrol,dim=1)     !da (/.false.,.false.,.true./)
                 all(Acontrol,dim=2)     !da (/.false.,.false./)

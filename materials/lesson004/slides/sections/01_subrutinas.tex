@@ -11,11 +11,12 @@
 
 \begin{frame}[fragile]{Subrutinas}
  \begin{itemize}[<+(0)->]
-  \item Una subrutina es un programa de orden jerárquico inferior al principal.
+  \item Una subrutina es un programa de menor orden jerárquico al principal.
   \item Tiene como objetivo llevar a cabo instrucciones ejecutables, por un subprograma de nivel superior, a través de una instrucción que llame a la subrutina.
-  \item La sintaxis es la siguiente:\\ 
+  \item La sintaxis es la siguiente:\\
+    \vspace{0.08cm} 
         \begin{minted}[linenos,autogobble]{fortran}
-        subroutine <nombre>[(<argumentos (ficticios)>)]
+        subroutine <nombre><argumentos (ficticios)>
         !instrucciones de declaración de los argumentos (ficticios)
         !instrucciones de declaración de los objetos locales
         !instrucciones ejecutables
@@ -23,10 +24,11 @@
         \end{minted}
     donde los <argumentos (ficticios)>, en caso de uso, son los objetos sobre los cuales la subrutina trabajará preferentemente.
   \item La subrutina es llamada por un subprograma por medio de la intrucción CALL
+    \vspace{0.08cm} 
         \begin{minted}[linenos,autogobble]{fortran}
         <identificacion unidad programatica>
         :
-        call <nombre>[<argumentos (usasdos)>]
+        call <nombre><argumentos (usasdos)>
         :
         end subroutine <unidad programática>
         \end{minted}  
@@ -35,7 +37,11 @@
 
 
 \begin{frame}[fragile]{Subrutinas}
- subroutine01 como figura de dos subrutinas
+  \vspace{5cm}
+  \begin{figure}
+    \includegraphics[width=0.7\textwidth]{./resources/subroutines.png}
+    \caption*{Uso de subrutinas en Fortran}
+  \end{figure}
 \end{frame}
 
 
@@ -107,24 +113,23 @@
 \textbf{Declaración de cadenas de caracteres}
  \begin{itemize}[<+(1)->]
   \item La forma más conveniente es fijando la longitud de la cadena.
-   \vspace{0.15cm}
       \begin{minted}[linenos,autogobble]{fortran}
       SUBROUTINE subrutina(ciudad)
         CHARACTER(len=10)::ciudad
         :
       END SUBROUTINE subrutina
-      \end{minted} 
+      \end{minted}
+    \vspace{0.1cm}    
   \item De manera explícita, por medio de un argumento tipo INTEGER.
-     \vspace{0.15cm}
       \begin{minted}[linenos,autogobble]{fortran}
       SUBROUTINE subrutina(n, ciudad)
         INTEGER, INTENT(IN)::n
           CHARACTER(len=n), INTENT(INOUT)::ciudad
           :
       END SUBROUTINE subrutina
-      \end{minted} 
+      \end{minted}
+    \vspace{0.1cm} 
   \item De manera implícita, utilizando el símbolo "*"
-     \vspace{0.15cm}
       \begin{minted}[linenos,autogobble]{fortran}
       SUBROUTINE subrutina(ciudad)
         CHARACATER(len=*) INTENT(INOUT)::ciudad
@@ -134,10 +139,6 @@
       END SUBROUTINE subrutina
       \end{minted} 
  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Subrutinas internas}
- subroutine01 como figura de dos subrutinas
 \end{frame}
 
 
@@ -207,10 +208,15 @@
             :
       END <unidad programática>
       \end{minted}
-  \item Una subrutina interna tiene acceso a todos los objetos de la unidad programática que la contiene; excepto que sean declaradas como locales o argumentos ficticios.
-  \item Una subrutina puede contener procedimientos internos, a condición de que no se trate de una subrutina interna; utilizando la estructura CONTAINS.
-  \item Cuando son empleadas como argumentos de uso, no deben ser declaradas a través de \emph{interface}.
  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}[<+(0)->]
+    \item Una subrutina interna tiene acceso a todos los objetos de la unidad programática que la contiene; excepto que sean declaradas como locales o argumentos ficticios.
+    \item Una subrutina puede contener procedimientos internos, a condición de que no se trate de una subrutina interna; utilizando la estructura CONTAINS.
+    \item Cuando son empleadas como argumentos de uso, no deben ser declaradas a través de \emph{interface}.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Subrutinas Internas}
@@ -241,6 +247,13 @@ LOGICAL :: OK=.TRUE.
       PRINT *,' Complex roots, calculation abandoned'
       :
   END IF    
+      \end{minted}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Subrutinas Internas}
+ \begin{itemize}[<+(0)->]
+    \begin{minted}[linenos=13,autogobble]{fortran}
 CONTAINS
 SUBROUTINE Interact(A,B,C,OK)
   IMPLICIT NONE
@@ -254,7 +267,6 @@ SUBROUTINE Interact(A,B,C,OK)
   IF (IO_Status == 0) THEN
       :
 END SUBROUTINE Interact
-      \end{minted}
+    \end{minted}
  \end{itemize}
 \end{frame}
-
