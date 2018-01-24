@@ -86,8 +86,6 @@
         PRINT *,' Sine of ', X ,' = ',SIN(X)
       END PROGRAM Functions02
       \end{minted}
-  \item [] \textbf{Funciones de transformación}
-  \item Son aquellas cuyos argumentos son arreglos. Actúan sobre otros arreglos.
   \vspace{0.15cm}
   \item [] 
         \begin{minted}[linenos,autogobble]{fortran}
@@ -111,7 +109,7 @@
   \vspace{0.1cm}
    \begin{table}[]
     \centering
-    \label{Tabla_funciones_predefinidas}
+    \label{Tabla_funciones_consulta}
     \resizebox{9cm}{!} {
       \begin{tabular}{|l|l|}
         \hline
@@ -135,35 +133,76 @@
 \begin{frame}[fragile]{Funciones predefinidas}
  \textbf{Transferencia y conversión de funciones}
  \begin{itemize}[<+(1)->]
-  \item Estas funciones convierten datos de un tipo y KIND a otro tipo y otro KIND.
+  \item Estas funciones convierten datos de cierto tipo y KIND a otros de distinto tipo y KIND.
+   \vspace{0.1cm}
    \begin{table}[]
     \centering
-    \label{Tabla_funciones_predefinidas}
+    \label{Tabla_funciones_transfyconvers}
     \resizebox{9cm}{!} {
       \begin{tabular}{|c|c|}
         \hline
         \textbf{Transferencia}  & ACHAR, AIMAG, AINT, ANINT, CHAR, CMPLX, CONJG,\\        
-        \textbf{y}              & DBLE, IACHAR, IBITS, ICHAR, INT, LOGICAL,\\                                  \\
-        \textbf{conversión}     & NINT, REAL, TRANSFER.                                                 \\ \hline
+        \textbf{y}              & DBLE, IACHAR, IBITS, ICHAR, INT, LOGICAL,     \\                   
+        \textbf{conversión}     & NINT, REAL, TRANSFER.                         \\ \hline
       \end{tabular}}
     \end{table}
- \end{itemize}
+  \end{itemize}
+\onslide<3-> \textbf{Funciones computacionales}
+ \begin{itemize}[<+(2)->]
+  \item Estas funciones llevan a cabo cierto cálculo devolviendo cierto resultado.
+    \vspace{0.1cm}
+    \begin{table}[]
+    \centering
+    \label{Tabla_funciones_computacionales}
+    \resizebox{9cm}{!} {
+      \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Numéricas}     & ABS, ACOS, ASIN, ATAN, ATAN2, CEILING, COS, COSH,   \\
+                               & DIM, DOT\_PRODUCT, DPROD, EXP, FLOOR, LOG, LOG 10,  \\
+                               & MATMUL, MAX, MIN, MOD, MODULO, SIGN, SIN, SINH,     \\
+                               & SQRT, TAN, TANH                                     \\ \hline       
+        \textbf{Caracteres}    & ADJUSTL, ADJUSTR, INDEX, LEN\_TRIM, LGE, LGT, LLE,  \\
+                               & LLT, REPEAT, SCAN, TRIM, VERIFY                     \\ \hline                      
+        \textbf{Bits}          & BTEST, IAND, IBCLR, IBSET, IEOR, IOR, ISHFT,        \\
+                               & ISHFTC, NOT                                         \\ \hline    
+      \end{tabular}}
+    \end{table}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Funciones predefinidas}
- \textbf{Funciones computacionales}
+ \textbf{Funciones de arreglos}
  \begin{itemize}[<+(1)->]
-  \item Estas funciones convierten datos de un tipo y KIND a otro tipo y otro KIND.
+  \item Estas funciones están relacionadas al uso de arreglos.
+   \vspace{0.1cm}
    \begin{table}[]
     \centering
-    \label{Tabla_funciones_predefinidas}
+    \label{Tabla_funciones_transfyconvers}
     \resizebox{9cm}{!} {
       \begin{tabular}{|c|c|}
         \hline
-        \textbf{Transferencia}  & ACHAR, AIMAG, AINT, ANINT, CHAR, CMPLX, CONJG,\\        
-        \textbf{y}              & DBLE, IACHAR, IBITS, ICHAR, INT, LOGICAL,\\                                  \\
-        \textbf{conversión}     & NINT, REAL, TRANSFER.                                                 \\ \hline
+        \textbf{Reducción}    & ALL, ANY, COUNT, MAXVAL, MINVAL, PRODUCT, SUM \\ \hline       
+        \textbf{Construcción} & MERGE, PACK, SPREAD, UNPACK                   \\ \hline                  
+        \textbf{Reshape}      & RESHAPE                                       \\ \hline
+        \textbf{Manipulation} & CSHIFT, EOSHIFT, TRANSPOSE                    \\ \hline
+        \textbf{Location}     & MAXLOC, MINLOC                                \\ \hline
       \end{tabular}}
     \end{table}
- \end{itemize}
+  \end{itemize}
+\onslide<3-> \textbf{Subrutinas predefinidas}
+\begin{itemize}[<+(2)->]
+  \item Las más usadas son:
+   \vspace{0.1cm}
+   \begin{table}[]
+    \centering
+    \label{Tabla_funciones_transfyconvers}
+    \resizebox{9cm}{!} {
+      \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Fecha y hora}     & CPU\_TIME, DATE\_AND\_TIME, SYSTEM\_CLOCK \\ \hline
+        \textbf{Nuḿero aleatorio} & RANDOM\_NUMBER, RANDOM\_SEED              \\ \hline 
+        \textbf{Otro}             & MVBITS                                    \\ \hline
+      \end{tabular}}
+    \end{table}
+  \end{itemize}
 \end{frame}

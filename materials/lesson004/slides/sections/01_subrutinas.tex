@@ -37,7 +37,7 @@
 
 
 \begin{frame}[fragile]{Subrutinas}
-  \vspace{5cm}
+  \vspace{1cm}
   \begin{figure}
     \includegraphics[width=0.7\textwidth]{./resources/subroutines.png}
     \caption*{Uso de subrutinas en Fortran}
@@ -245,16 +245,22 @@ LOGICAL :: OK=.TRUE.
     CALL Solve(P,Q,R,Root1,Root2,IFail)
     IF (IFail == 1) THEN
       PRINT *,' Complex roots, calculation abandoned'
-      :
-  END IF    
+    ELSE
+      PRINT *,' Roots are  ',Root1,'  ',Root2
+    ENDIF
+  ELSE
+    PRINT*,' Error in data input program ends'
+  ENDIF
+
+CONTAINS 
       \end{minted}
  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Subrutinas Internas}
  \begin{itemize}[<+(0)->]
-    \begin{minted}[linenos=13,autogobble]{fortran}
-CONTAINS
+    \begin{minted}[linenos, firstnumber=13,autogobble]{fortran}
+
 SUBROUTINE Interact(A,B,C,OK)
   IMPLICIT NONE
   REAL , INTENT(OUT) :: A
@@ -264,9 +270,23 @@ SUBROUTINE Interact(A,B,C,OK)
   INTEGER :: IO_Status=0
   PRINT*,' Type in the coefficients A, B AND C'
   READ(UNIT=*,FMT=*,IOSTAT=IO_Status)A,B,C
-  IF (IO_Status == 0) THEN
-      :
+:
 END SUBROUTINE Interact
+
+SUBROUTINE Solve(E,F,G,Root1,Root2,IFail)
+  IMPLICIT NONE
+  REAL , INTENT(IN) :: E
+  REAL , INTENT(IN) :: F
+  REAL , INTENT(IN) :: G
+  REAL , INTENT(OUT) :: Root1
+  REAL , INTENT(OUT) :: Root2
+  INTEGER , INTENT(INOUT) :: IFail
+! Local variables
+:
+! if term < 0, roots are complex
+:
+END SUBROUTINE Solve
+END PROGRAM Subroutines03
     \end{minted}
  \end{itemize}
 \end{frame}
