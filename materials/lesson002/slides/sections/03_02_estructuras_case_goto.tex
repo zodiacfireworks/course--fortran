@@ -8,7 +8,7 @@
 \begin{frame}[fragile]{Selección: SWITCH CASE}  
  \begin{itemize}[<+(0)->]
   \item Permite la ejecución selectiva de una o más instrucciones o alternativas en función de expresiones lógicas.
-  \item Se presenta una estructura simple (IF), doble (IF-ELSE) y multialternativa (SELECT CASE).
+  \item Se presenta una estructura simple (IF), doble (IF-ELSE) y mxxxxxxultialternativa (SELECT CASE).
   \vspace{0.2cm}
   \item [] 
    \begin{minted}[linenos,autogobble]{fortran}
@@ -44,7 +44,7 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{\textit{The infamous} TO GO}  
+\begin{frame}[fragile]{\textit{The infamous} GO TO}  
  \begin{itemize}[<+(0)->]
   \item [] 
    \begin{minted}[linenos,autogobble]{fortran}
@@ -53,8 +53,8 @@
       GOTO 2
   9   WRITE(*, *) 8
       GOTO 10
-    .
-    .
+    :
+    :
   7   WRITE(*, *) 6
       GOTO 8
  10   WRITE(*, *) 9

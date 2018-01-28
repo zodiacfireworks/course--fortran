@@ -10,20 +10,131 @@
 
 \subsection{Apertura/Lectura y escritura de archivos}
 
-\begin{frame}[fragile]{} 
+\begin{frame}[fragile]{Apertura de archivos} 
+\textbf{Archivos}    
+      \begin{itemize}[<+(1)->]
+        \item Un archivo es un objeto que guarda o contiene datos, información o instrucciones en un espacio de memoria.
+        \item Entre ellos destacan:
+        \item [-] Archivos de texto. Son la fuente de lo programas, listas de compilación,etc. Pueden ser impresos y directamente leídos.
+        \item [-] Archivos de datos. Existen en dos formas: los que pueden ser usados en un editor (archivo de texto) y aquellos que pueden ser usados un paquete o un programa (codificado).
+        \item [-] Arcivos binarios. Secuencias de bits. No pueden ser impresos o examinados directamente, por ello necesitan de programas para su propósito.
+      \end{itemize}
+\onslide <7->\textbf{Archivo de datos en Fortran}
+      \begin{itemize}[<+(1)->]
+        \item Fortran permite asociar un número como unidad lógica con cualquier archivo para su creación, conexión y acceso.
+      \end{itemize}  
+\end{frame}
+
+\begin{frame}[fragile]{Lectura y escritura de archivos}    
+\textbf{Declaración OPEN}
+  \begin{itemize}[<+(1)->]
+    \item \emph{OPEN} permite crear o conectar una unidad numérica como especificador con un archivo.
+    \item La sintaxis para la declaración es la siguiente:\\ 
+      \centering OPEN (unidad de control, [lista de salida])
+  \end{itemize}
+\onslide <4->\textbf{Declaración CLOSE}
+  \begin{itemize}[<+(2)->]
+    \item \emph{CLOSE} permite borrar o desvincular la unidad numérica del archivo.
+    \item La sintaxis para la declaración es la siguiente sintaxis:\\ 
+      \centering CLOSE (unidad de control, [opciones])
+  \end{itemize}
+\onslide <7->\textbf{Declaración READ}
+  \begin{itemize}[<+(3)->]
+    \item \emph{READ} permite leer datos desde una referencia. Puede contener especificaciones del proceso de retorno de datos.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lectura y escritura de archivos}
+ \textbf{Declaración WRITE}
+  \begin{itemize}[<+(1)->]
+    \item \emph{WRITE} permite mandar datos o escribirlos en unidad numerada que puede ser la pantalla, un archivo de disco u otro dispositivo externo.
+    \item La opción \emph{PRINT} es una forma limitada de \emph{WRITE}.
+    \item Tanto \emph{READ} como \emph{WRITE} tienen la siguiente sintaxis:\\ 
+    \centering READ/WRITE (unidad de control, [lista de entrada/salida])
+  \end{itemize}
+ \onslide <5->\textbf{Declaración STATUS}
+  \begin{itemize}[<+(2)->]
+    \item \emph{STATUS} permite conocer el estado del archivo.
+    \item Puede tomar cuatro valores: 
+    \item [-] STATUS = 'OLD'
+    \item [-] STATUS = 'NEW'
+    \item [-] STATUS = 'SCRATCH'
+    \item [-] STATUS = 'UNKNOWN'
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lectura y escritura de archivos}
+  \begin{itemize}
+   \item []
+    \begin{minted}[linenos,autogobble]{fortran}
+      PROGRAM File01
+      IMPLICIT NONE
+      REAL :: X
+      CHARACTER (7) :: WHICH
+          OPEN(UNIT=5,FILE='INPUT')
+            DO
+              WRITE(UNIT=6,FMT='('' DATA SET NAME, OR END'')')
+              READ(UNIT=5,FMT='(A)') WHICH
+              IF(WHICH == 'END') EXIT
+              OPEN(UNIT=1,FILE=WHICH)
+              READ(UNIT=1,FMT=100) X
+              !...
+          CLOSE(UNIT=1)
+            END DO
+      END PROGRAM File01
+    \end{minted}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lectura y escritura de archivos}
+ \textbf{Opciones en declaraciones de entrada/salida}
+  \begin{itemize}[<+(1)->]
+   \item \textbf{UNIT:} El número del archivo que será abierto.
+   \item \textbf{IOSTAT:} Especifica el estado I/O y designa una variable numérica para guardar un valor de acuerdo al estado del archivo. 
+   \item [-] Un entero positivo, indicando una condición de error.
+   \item [-] Cero, indicando que no existe un error, el término de un archivo o condición de registro durante la ejecución de \emph{READ}.
+   \item \textbf{FILE:} Especifica el nombre del archivo.
+   \item \textbf{STATUS:} Especifica el estado del archivo.
+   \item \textbf{ACCESS:} Especifica la forma en la que se usará el archivo: secuencial (SEQUENTIAL) por defecto o aleatoria (DIRECT). 
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lectura y escritura de archivos}
+  \begin{itemize}[<+(0)->]
+   \item \textbf{FORM:} 
+   \item \textbf{RECL:} Variable entera o constante que especifica 
+   \item \textbf{BLANK:} Especifica el reconocimiento de un espacio en blanco tomando los valores...
+   \item [-] NULL, si son ignorados en la lectura.
+   \item [-] ZERO, si los espacios son tratados como cero.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Lectura y escritura de archivos} 
     \begin{itemize}[<+(0)->]
-        \item [] \textbf{} 
-        \item 
-        \vspace{0.1cm}
-        \begin{minted}{bash}
-        [softbutterfly\@SB-PC]$ programa    
-        Introduzca los valores de la matriz A de talla 3x2
-        1,2,3,4 5 6
-        La matriz que usted ha introducido es:
-        Primera Fila           1           4
-        Segunda Fila           2           5
-        Tercera Fila           3           6
-        [softbutterfly\@SB-PC]  
-        \end{minted}
+     \item [] A partir del siguiente programa:
+      \vspace{0.1cm}
+      \begin{minted}[linenos,autogobble]{fortran}
+      PROGRAM matriz3x2
+      INTEGER, DIMENSION(3,2)::A
+      WRITE(*,*) "Introduzca los valores de la matriz A de talla 3x2"
+      READ(*,*)A
+      WRITE(*,*) "La matriz que usted ha introducido es:"
+      WRITE(*,*) "Primera Fila",A(1,:)
+      WRITE(*,*) "Segunda Fila",A(2,:)
+      WRITE(*,*) "Tercera Fila",A(3,:)
+      END PROGRAM matriz3x2
+      \end{minted}
+
+     \item [] podemos obtener, meditante la ejecución:
+      \begin{mintedbashbox}
+      [softbutterfly\@SB-PC] ~\$     
+      Introduzca los valores de la matriz A de talla 3x2
+      1,2,3,4 5 6
+      La matriz que usted ha introducido es:
+      Primera Fila           1           4
+      Segunda Fila           2           5
+      Tercera Fila           3           6
+      [softbutterfly\@SB-PC]    
+      \end{mintedbashbox}
     \end{itemize}
 \end{frame}

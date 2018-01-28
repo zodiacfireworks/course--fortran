@@ -16,11 +16,18 @@
  \begin{itemize}[<+(0)->]
   \item Un arreglo es el conjunto de una variable con un identificador a los elementos de una lista o grupo.
   \item Se pueden formar arreglos con distinta cantidad de dimensiones.
-  \item [-] Arreglo unidimensional: indexado de valores a un índice.\\ 
+  \item [-] Arreglo unidimensional: indexado de valores a un índice\\ 
   \centering $x_{ni}, x_{ni+1}, \ldots, x_{ns-1}, x_{ns}$
   \item [ ] ubicados por el índice i y acotados por $ns \geq ni$. 
   \item [-] Arreglo bidimensional: indexado de valores a dos índices. 
-  \item [ ] ubicados por los índices i, j ("filas y columnas") y acotados por ni y ns, mi y ms respectivamente.
+  \item [ ] ubicados por los índices i, j ("filas y columnas") y acotados por ni y ns, mi y ms respectivamente. \\
+            $$
+                A = \left( \begin{array}{cccccc}
+                    x_{ni,mi}     &x_{ni,mi+1}    &...     &x_{ni,j}     &...      &x_{ni,ms}   \\
+                    :             &:              &        &:            &         &:           \\
+                    x_{ns,mi}     &x_{ns,mi+1}    &...     &x_{ns,j}     &...      &x_{ns,ms}   \\
+                \end{array} \right)
+            $$
   \item [-] Arreglo $n$-dimensional: lista indexada a $n$ índices $i_{1}, i_{2}, \ldots, i_{n}$ acotados por un valor inferior y uno superior. 
  \end{itemize}
 \end{frame} 
@@ -55,7 +62,7 @@
  \begin{itemize}[<+(1)->]
  \item La definición de los valores de un arreglo pueden darse componente por componente o de manera global.
  \item La asignación componente por componente se da la misma forma que una variable independiente.
- \vspace{0.2cm}
+ \vspace{0.15 cm}
  \item[]
    \begin{minted}[linenos,autogobble]{fortran}
     REAL(kind=8), DIMENSION::vector
@@ -74,7 +81,7 @@
   \item La asignación de manera global, en el caso de arreglos unidimensionales, se denota con delimitadores (/y/) de la forma \\ 
   \centering <arreglo>=(/<listado de (ns-ni)+1 expresiones>/) \\ 
   \item [] donde <arreglo> es de DIMENSION(ni:ns).
-  \vspace{0.2cm}
+  \vspace{0.15 cm}
   \item []
   \begin{minted}[linenos,autogobble]{fortran}
     REAL , DIMENSION(12) :: RainFall = &
@@ -92,7 +99,7 @@
   \item Asignación de memoria de manera dinámica durante la ejecución de un programa (Fortran 90 en adelante).
   \item La creación de estos arreglos pueden resumirse en tres momentos: 
   \item [-] La notificación, asignando un tipo al arreglo; la forma (\# de índices) a través de DIMENSION junto con la opción ALLOCATABLE.
-  \vspace{0.2cm}
+  \vspace{0.15 cm}
   \item []
     \begin{minted}[linenos,autogobble]{fortran}
     REAL, DIMENSION(:), ALLOCATABLE::vector
@@ -100,7 +107,7 @@
     CHARACTER(len=8), DIMENSION(:,:,:), ALLOCATABLE::grilla
     \end{minted}
   \item [-] La creación del arreglo con el rango de índices asignado, se realiza mediante la instrucción ALLOCATE.
-  \vspace{0.2cm}
+  \vspace{0.15 cm}
   \item [] 
     \begin{minted}[linenos,autogobble]{fortran}
     :
@@ -116,14 +123,14 @@
  \begin{itemize}[<+(0)->]
   \item [] La instrucción ALLOCATE puede crear varios arreglos al mismo tiempo.
   \item [-] Finalmente la destrucción o anulación del arreglo, se realiza mediante la instrucción DEALLOCATE
-  \vspace{0.2cm}
+  \vspace{0.15 cm}
   \item [] 
     \begin{minted}[linenos,autogobble]{fortran}
     DEALLOCATE(vector, matriz)
     DEALLOCATE(grilla)
     \end{minted}
   \item Es posible saber si el espacio de memoria para el arreglo es suficiente, agregando la opción stat a la instrucción ALLOCATE.
-  \vspace{0.2cm}
+  \vspace{0.15 cm}
   \item [] 
     \begin{minted}[linenos,autogobble]{fortran}
     ALLOCATE(vector(1:n), stat=error)
