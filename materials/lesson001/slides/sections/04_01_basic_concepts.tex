@@ -11,23 +11,30 @@
   \hspace{1cm} \item [-] Enlazado
 
   \item El proceso de compilación en fortran posee la siguiente sintaxis:
-   \begin{mintedbash} 
+   \begin{mintedbash}
     fcomp [options] file1 [file2] [...] [fileN]
    \end{mintedbash}
   \item [-] fcomp $\Rightarrow$ denota el comando para llamar al compilador. (gfortran, ifort, ...)
   \item [-] options $\Rightarrow$ opciones que permite el compilador. (-o, -f, -c, ...)
-  \item [-] file $\Rightarrow$ denota el archivo con su respectiva extensión (.f90, .f95, .o, ...)    
-  \item Finalmente se obtiene un producto final.
+  \item [-] file $\Rightarrow$ denota el archivo con su respectiva extensión (.f90, .f95, .o, ...)
+  \item Finalmente se obtiene un producto final que comúnmente es un archivo ejeutable.
 \end{itemize}
 \end{frame}
-  
+
 
 \begin{frame}[fragile]{Compilación}
 \textbf{Compilador}
   \begin{itemize}[<+(1)->]
-  \item Programa  escrito en un lenguaje de programación, que a su vez, traduce y genera otro programa
-en otro lenguaje de programación (código máquina), ambos equivalentes.
-  \item En principio, al usar un compilador, se busca traducir y simplificar un lenguaje de mayor complejidad a uno mucho más cotidiano y manejable en términos informáticos.
+  \item Un compialdor es un programa que transforma el codigo escrito
+  en un lenguaje de programación (lenguaje fuente) en otro archivo escrito
+  en otro lenguaje de programacion (lenguaje objetivo.
+
+  \item El lenguaje fuente es con frecuencia un lenguaje legible para los
+  humanos, facil de leer e interpretar, como FORTRAN.
+
+  \item Por otra parte el lenguaje objetivo es el lengaje máquina, el que
+  se emplea para darle instrucciones que la maquina pueda entender y
+  ejeutar.
  \end{itemize}
 \end{frame}
 
